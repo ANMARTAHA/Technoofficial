@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Smart — Pharmaceutical Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F3EA;
+  --paper-dim:#EDE8D9;
+  --ink:#17241E;
+  --pine:#1F3A34;
+  --pine-2:#2E5148;
+  --gold:#B4832C;
+  --gold-2:#8F6620;
+  --wine:#6E2E2A;
+  --line:#C9C0A6;
+  --card:#FFFEF9;
+  --ok:#2E6B4F;
+  --bad:#9A3B34;
+  --radius:4px;
+  --shadow:0 1px 0 rgba(23,36,30,0.06);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(23,36,30,0.05) 1px, transparent 0);
+  background-size:22px 22px;
+  color:var(--ink);
+  font-family:'Source Sans 3', sans-serif;
+  min-height:100vh;
+}
+::selection{background:var(--gold); color:var(--paper);}
+
+/* ---------- HEADER ---------- */
+header{
+  padding:28px 18px 18px;
+  border-bottom:2px solid var(--pine);
+  background:linear-gradient(180deg, var(--paper) 0%, var(--paper-dim) 100%);
+}
+.brand{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+  max-width:980px;
+  margin:0 auto;
+}
+.brand h1{
+  font-family:'Fraunces', serif;
+  font-weight:700;
+  font-size:clamp(28px, 7vw, 44px);
+  margin:0;
+  letter-spacing:-0.01em;
+  color:var(--pine);
+}
+.brand h1 span{color:var(--gold-2); font-style:italic; font-weight:600;}
+.brand .tag{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  color:var(--wine);
+  border:1px solid var(--wine);
+  padding:3px 8px;
+  border-radius:2px;
+  white-space:nowrap;
+}
+.subline{
+  max-width:980px;
+  margin:6px auto 0;
+  font-size:14px;
+  color:#54544a;
+  border-top:1px dashed var(--line);
+  padding-top:8px;
+}
+
+/* ---------- NAV ---------- */
+nav.tabs{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  overflow-x:auto;
+  background:var(--pine);
+  border-bottom:3px solid var(--gold);
+  scrollbar-width:none;
+}
+nav.tabs::-webkit-scrollbar{display:none;}
+nav.tabs button{
+  flex:0 0 auto;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12.5px;
+  letter-spacing:0.02em;
+  background:transparent;
+  color:#CFE0D8;
+  border:none;
+  border-right:1px solid rgba(255,255,255,0.12);
+  padding:13px 16px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .15s ease, color .15s ease;
+}
+nav.tabs button .num{color:var(--gold); margin-right:6px;}
+nav.tabs button:hover{background:var(--pine-2); color:#fff;}
+nav.tabs button.active{background:var(--paper); color:var(--pine); font-weight:600;}
+nav.tabs button.active .num{color:var(--wine);}
+
+/* ---------- MAIN ---------- */
+main{max-width:980px; margin:0 auto; padding:22px 16px 60px;}
+section.panel{display:none;}
+section.panel.active{display:block; animation:fade .25s ease;}
+@keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:16px;
+  border-bottom:2px solid var(--ink);
+  padding-bottom:8px;
+}
+.section-head h2{
+  font-family:'Fraunces', serif;
+  font-weight:700;
+  font-size:26px;
+  margin:0;
+  color:var(--pine);
+}
+.section-head .count{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  color:var(--wine);
+  background:var(--paper-dim);
+  border:1px solid var(--line);
+  padding:2px 8px;
+  border-radius:12px;
+}
+
+/* ---------- OVERVIEW ---------- */
+.law-grid{display:grid; grid-template-columns:1fr; gap:10px;}
+@media(min-width:640px){.law-grid{grid-template-columns:1fr 1fr;}}
+.law{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+  border-radius:var(--radius);
+  padding:12px 14px;
+  box-shadow:var(--shadow);
+}
+.law h3{
+  margin:0 0 4px;
+  font-size:14px;
+  color:var(--wine);
+  font-family:'IBM Plex Mono', monospace;
+  text-transform:none;
+}
+.law p{margin:0; font-size:14.5px; line-height:1.5;}
+.law p b{color:var(--pine);}
+
+/* ---------- DIAGRAMS ---------- */
+.diagram-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+}
+.diagram-card h3{
+  font-family:'Fraunces', serif;
+  color:var(--pine);
+  margin:0 0 4px;
+  font-size:19px;
+}
+.diagram-card .hint{font-size:12.5px; color:#7a7a6d; margin:0 0 14px; font-family:'IBM Plex Mono',monospace;}
+
+.tree{display:flex; flex-direction:column; align-items:center;}
+.tree .root{
+  background:var(--pine); color:#fff; font-weight:600; padding:8px 16px;
+  border-radius:20px; font-size:13.5px; margin-bottom:4px;
+}
+.tree .stem{width:2px; height:16px; background:var(--line);}
+.branches{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; width:100%; position:relative;}
+.node-btn{
+  background:var(--paper-dim);
+  border:1.5px solid var(--pine);
+  color:var(--pine);
+  font-weight:600;
+  font-size:13px;
+  padding:9px 13px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all .15s ease;
+  font-family:'Source Sans 3', sans-serif;
+}
+.node-btn:hover{background:var(--pine); color:#fff;}
+.node-btn.on{background:var(--gold); border-color:var(--gold-2); color:#fff;}
+.reveal{
+  margin-top:14px;
+  background:var(--paper-dim);
+  border-left:3px solid var(--wine);
+  padding:10px 14px;
+  border-radius:4px;
+  font-size:14px;
+  line-height:1.55;
+  display:none;
+}
+.reveal.show{display:block;}
+
+.hexrow{display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
+.hex{
+  background:var(--pine); color:#fff; padding:12px 10px; width:104px; text-align:center;
+  border-radius:8px; cursor:pointer; font-size:13px; font-weight:600;
+  transition:transform .15s ease, background .15s ease;
+  border:2px solid transparent;
+}
+.hex:hover{transform:translateY(-2px); background:var(--pine-2);}
+.hex.on{background:var(--gold); border-color:var(--gold-2);}
+
+.bar-row{display:flex; align-items:center; gap:10px; margin-bottom:8px; cursor:pointer;}
+.bar-label{width:112px; flex:0 0 auto; font-size:12.5px; font-weight:600; font-family:'IBM Plex Mono',monospace; color:var(--pine);}
+.bar-track{flex:1; background:var(--paper-dim); border-radius:20px; height:20px; overflow:hidden; border:1px solid var(--line);}
+.bar-fill{height:100%; background:linear-gradient(90deg, var(--gold-2), var(--gold)); border-radius:20px; transition:width .3s ease;}
+.bar-row.on .bar-fill{background:linear-gradient(90deg, var(--wine), #a34b44);}
+
+.wheel{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px;}
+.spoke{
+  background:var(--paper-dim); border:1.5px dashed var(--line); border-radius:8px;
+  padding:12px; text-align:center; cursor:pointer; font-size:13px; font-weight:600; color:var(--pine);
+}
+.spoke:hover{border-color:var(--gold);}
+.spoke.on{background:var(--pine); color:#fff; border-style:solid; border-color:var(--pine);}
+
+/* ---------- MINI MAP ---------- */
+.mmap-wrap{display:grid; grid-template-columns:1fr; gap:16px;}
+@media(min-width:760px){.mmap-wrap{grid-template-columns:260px 1fr;}}
+.mmap-list{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  max-height:520px; overflow-y:auto;
+}
+.mmap-list button{
+  display:block; width:100%; text-align:left; background:none; border:none;
+  border-bottom:1px solid var(--paper-dim); padding:11px 14px; cursor:pointer;
+  font-size:13.5px; color:var(--ink); font-family:'Source Sans 3', sans-serif;
+}
+.mmap-list button:hover{background:var(--paper-dim);}
+.mmap-list button.on{background:var(--pine); color:#fff; font-weight:600;}
+.mmap-reader{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px; min-height:300px;
+}
+.mmap-reader h3{font-family:'Fraunces',serif; color:var(--pine); margin-top:0; font-size:20px;}
+.mmap-reader .placeholder{color:#8b8b7e; font-size:14px; font-family:'IBM Plex Mono',monospace;}
+.mmap-reader ul{padding-left:18px; line-height:1.7; font-size:14.5px;}
+.mmap-reader p{line-height:1.65; font-size:14.5px;}
+
+/* ---------- LEVEL SELECTOR (shared by Flash Cards + Quiz Bank) ---------- */
+.level-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;}
+.level-row .node-btn{font-size:12px; padding:8px 12px;}
+
+/* ---------- FLASHCARDS ---------- */
+.fc-toolbar{display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap;}
+.fc-toolbar input{
+  flex:1; min-width:160px; padding:9px 12px; border:1px solid var(--line); border-radius:20px;
+  font-size:13.5px; background:var(--card); font-family:'Source Sans 3',sans-serif;
+}
+.fc-toolbar button{
+  background:var(--pine); color:#fff; border:none; padding:9px 14px; border-radius:20px;
+  font-size:12.5px; cursor:pointer; font-family:'IBM Plex Mono',monospace;
+}
+.fc-grid{display:grid; grid-template-columns:1fr; gap:12px;}
+@media(min-width:600px){.fc-grid{grid-template-columns:1fr 1fr;}}
+.flip-card{ perspective:1200px; height:150px; cursor:pointer;}
+.flip-inner{position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d;}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius:6px;
+  padding:14px; display:flex; align-items:center; font-size:13.5px; line-height:1.4;
+  border:1px solid var(--line); box-shadow:var(--shadow); overflow-y:auto;
+}
+.flip-front{background:var(--card); color:var(--ink);}
+.flip-front .fc-idx{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--gold-2); display:block; margin-bottom:5px;}
+.flip-back{background:var(--pine); color:#F1EEE1; transform:rotateY(180deg);}
+.flip-back:before{content:"A"; position:absolute; top:6px; right:10px; font-family:'IBM Plex Mono'; font-size:10px; color:var(--gold);}
+
+/* ---------- QUIZ ---------- */
+.quiz-bar{
+  display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:10px; flex-wrap:wrap;
+}
+.progress-track{flex:1; height:8px; background:var(--paper-dim); border-radius:6px; overflow:hidden; border:1px solid var(--line); min-width:120px;}
+.progress-fill{height:100%; background:var(--gold); width:0%; transition:width .25s ease;}
+.score-chip{font-family:'IBM Plex Mono',monospace; font-size:12.5px; background:var(--pine); color:#fff; padding:5px 10px; border-radius:14px;}
+.quiz-card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px;
+  box-shadow:var(--shadow);
+}
+.quiz-q{font-size:16.5px; font-weight:600; color:var(--pine); margin:0 0 14px; line-height:1.4;}
+.quiz-opt{
+  display:block; width:100%; text-align:left; background:var(--paper-dim); border:1.5px solid var(--line);
+  padding:11px 13px; border-radius:6px; margin-bottom:8px; cursor:pointer; font-size:14px; color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+}
+.quiz-opt:hover{border-color:var(--gold);}
+.quiz-opt.correct{background:#DDEEE2; border-color:var(--ok); color:var(--ok); font-weight:600;}
+.quiz-opt.wrong{background:#F5DEDB; border-color:var(--bad); color:var(--bad); font-weight:600;}
+.quiz-opt[disabled]{cursor:default;}
+.quiz-nav{display:flex; justify-content:space-between; margin-top:14px;}
+.quiz-nav button{
+  background:var(--pine); color:#fff; border:none; padding:10px 18px; border-radius:20px;
+  font-size:13px; cursor:pointer; font-family:'IBM Plex Mono',monospace;
+}
+.quiz-nav button:disabled{background:#b9b9ab; cursor:not-allowed;}
+.quiz-result{text-align:center; padding:30px 16px;}
+.quiz-result .big{font-family:'Fraunces',serif; font-size:52px; color:var(--pine); font-weight:700;}
+.quiz-result p{color:#54544a; font-size:14.5px;}
+
+/* ---------- FOOTER ---------- */
+footer{
+  text-align:center; padding:22px 16px 34px; font-family:'IBM Plex Mono', monospace;
+  font-size:11.5px; color:#7c7c6e; border-top:1px solid var(--line); margin-top:10px;
+}
+footer b{color:var(--wine);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>Study <span>Smart</span></h1>
+    <span class="tag">PHARMACEUTICAL TECHNOLOGY I · SOLUTIONS</span>
+  </div>
+  <div class="subline">A compact study companion built from the Solutions lecture — laws, diagrams, flash cards and a quiz bank in one place.</div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="overview"><span class="num">01</span>Overview</button>
+  <button data-tab="diagrams"><span class="num">02</span>Interactive Diagrams</button>
+  <button data-tab="minimap"><span class="num">03</span>Mini Map</button>
+  <button data-tab="flashcards"><span class="num">04</span>Flash Cards</button>
+  <button data-tab="quiz"><span class="num">05</span>Quiz Bank</button>
+</nav>
+
+<main>
+
+  <!-- ============= 1. OVERVIEW ============= -->
+  <section class="panel active" id="overview">
+    <div class="section-head"><h2>Overview</h2><span class="count">key rules only</span></div>
+    <div class="law-grid" id="lawGrid"></div>
+  </section>
+
+  <!-- ============= 2. DIAGRAMS ============= -->
+  <section class="panel" id="diagrams">
+    <div class="section-head"><h2>Interactive Diagrams</h2><span class="count">tap a node</span></div>
+
+    <div class="diagram-card">
+      <h3>Four Ways to Prepare a Solution</h3>
+      <p class="hint">tap each branch to reveal how &amp; why</p>
+      <div class="tree">
+        <div class="root">Solution</div>
+        <div class="stem"></div>
+        <div class="branches" id="prepTree"></div>
+      </div>
+      <div class="reveal" id="prepReveal"></div>
+    </div>
+
+    <div class="diagram-card">
+      <h3>Where Solutions Are Used</h3>
+      <p class="hint">tap a route to see its defining feature</p>
+      <div class="hexrow" id="useHex"></div>
+      <div class="reveal" id="useReveal"></div>
+    </div>
+
+    <div class="diagram-card">
+      <h3>Parenteral Routes — Relative Injection Volume</h3>
+      <p class="hint">tap a bar to see the route's profile</p>
+      <div id="volBars"></div>
+      <div class="reveal" id="volReveal"></div>
+    </div>
+
+    <div class="diagram-card">
+      <h3>The 5 Ophthalmic Requirements</h3>
+      <p class="hint">tap a spoke to expand it</p>
+      <div class="wheel" id="ophWheel"></div>
+      <div class="reveal" id="ophReveal"></div>
+    </div>
+  </section>
+
+  <!-- ============= 3. MINI MAP ============= -->
+  <section class="panel" id="minimap">
+    <div class="section-head"><h2>Mini Map</h2><span class="count">tap a title</span></div>
+    <div class="mmap-wrap">
+      <div class="mmap-list" id="mmapList"></div>
+      <div class="mmap-reader" id="mmapReader">
+        <p class="placeholder">← select a topic on the left to read it here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= 4. FLASHCARDS ============= -->
+  <section class="panel" id="flashcards">
+    <div class="section-head"><h2>Flash Cards</h2><span class="count" id="fcCount">0 cards</span></div>
+    <div class="level-row" id="fcLevelRow">
+      <button class="node-btn on" data-level="easy">LEVEL 1 · EASY</button>
+      <button class="node-btn" data-level="medium">LEVEL 2 · MEDIUM</button>
+      <button class="node-btn" data-level="hard">LEVEL 3 · HARD</button>
+    </div>
+    <div class="fc-toolbar">
+      <input type="text" id="fcSearch" placeholder="search flash cards…">
+      <button id="fcShuffle">SHUFFLE</button>
+    </div>
+    <div class="fc-grid" id="fcGrid"></div>
+  </section>
+
+  <!-- ============= 5. QUIZ BANK ============= -->
+  <section class="panel" id="quiz">
+    <div class="section-head"><h2>Quiz Bank</h2><span class="count" id="quizCount">0 questions</span></div>
+    <div class="level-row" id="quizLevelRow">
+      <button class="node-btn on" data-level="easy">LEVEL 1 · EASY</button>
+      <button class="node-btn" data-level="medium">LEVEL 2 · MEDIUM</button>
+      <button class="node-btn" data-level="hard">LEVEL 3 · HARD</button>
+    </div>
+    <div class="quiz-bar">
+      <div class="progress-track"><div class="progress-fill" id="quizProgress"></div></div>
+      <div class="score-chip" id="quizScore">Score 0/0</div>
+    </div>
+    <div id="quizArea"></div>
+  </section>
+
+</main>
+
+<footer>© <b>Anmar Taha</b> — Study Smart · Pharmaceutical Technology I · Solutions</footer>
+
+<script>
+/* ===================== TAB SWITCHING ===================== */
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-tab]');
+  if(!btn) return;
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('section.panel').forEach(s=>s.classList.remove('active'));
+  document.getElementById(btn.dataset.tab).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+/* ===================== 1. OVERVIEW DATA ===================== */
+const LAWS = [
+ ["Four prep methods","Simple solution · simple solution + sterilization · chemical reaction · extraction."],
+ ["Prefer simple solution","When both routes work, simple solution is preferred (e.g. lime water from Ca(OH)2 vs CaO+H2O)."],
+ ["Why choose chemical reaction","(1) solute won't dissolve in solid form, (2) drug only usable as a solution, (3) a useful by-product is formed."],
+ ["Six use categories","Oral · Ophthalmic · Parenteral · Nasal · Otic · Other."],
+ ["Ophthalmic 4 must-haves","Isotonic · buffered to pH 7.4 · viscous (15–25 cps) · properly packaged volume."],
+ ["Ophthalmic sterilization","Autoclave 121°C / 15 min; unstable drugs use micro-filtration, gas or rays instead."],
+ ["Eye tonicity tolerance","0.6–2% without marked discomfort; 1.9% boric acid ≈ 0.9% NaCl osmotically."],
+ ["Two USP ophthalmic buffers","Boric acid (pH <5) for cocaine/phenylephrine/pilocarpine/tetracaine; phosphate (pH 5.9–8.0) — avoid with pilocarpine/homatropine."],
+ ["Ophthalmic viscosity target","15–25 cps, typically via 1% methylcellulose."],
+ ["Parenteral 6 requirements","Safety · sterility · pyrogen-free · clarity · stability · isotonicity."],
+ ["Injection volumes","IV: unlimited · IM: 2–5 mL · SC: 2 mL · ID: 0.2 mL · IS: up to 10 mL."],
+ ["IM absorption order","Solution > aqueous suspension > oily solution > oily suspension > oily suspension + thickener."],
+ ["Nasal solution rules","≈0.9% NaCl isotonic, pH 5.5–6.5, use no longer than 3–5 days."],
+ ["Otic vehicle logic","Anhydrous glycerin / propylene glycol vehicles; small 5–15 mL dropper containers."],
+ ["Concentration language","%w/v, %v/v, %w/w = per 100 units; ratio strength (1:1000) = per stated large volume/weight."],
+ ["Dissolution boosters","Heat · smaller particle size · solubilizing agent · agitation — but heat can degrade drugs or lose volatiles."],
+ ["Calcium hydroxide quirk","Exothermic on dissolving — MORE soluble cold (170 mg/100 mL @15°C) than warm (140 mg/100 mL @25°C)."],
+ ["Most solutions are unsaturated","Solute amounts sit well below the solvent's real capacity."],
+];
+const lawGrid = document.getElementById('lawGrid');
+LAWS.forEach(([h,p])=>{
+  const d = document.createElement('div');
+  d.className='law';
+  d.innerHTML = `<h3>${h}</h3><p>${p}</p>`;
+  lawGrid.appendChild(d);
+});
+
+/* ===================== 2. DIAGRAMS ===================== */
+const PREP = [
+ ["Simple Solution","Easiest method — dissolve the pure solute directly in the solvent. Preferred whenever a chemical-reaction route also exists. E.g. Amaranth, Gentian violet, Iodine, Tolnaftate solutions."],
+ ["Simple Solution + Sterilization","Same as simple solution but the product must be sterile because it contacts sensitive tissue: anticoagulants (Heparin, citrate-phosphate-dextrose) and irrigating/physiologic solutions (Ringer's)."],
+ ["Chemical Reaction","Used when the pure solute won't dissolve as-is, the drug is only usable as a solution (formalin, H2O2), or a useful by-product forms (Mg citrate). Example: CaO + H2O → Ca(OH)2."],
+ ["Extraction","The active constituent is pulled out with the help of another reagent. Example: Epinephrine (adrenalin chloride) 1:1000, extracted with the help of hydrochloric acid."],
+];
+const prepTree = document.getElementById('prepTree');
+const prepReveal = document.getElementById('prepReveal');
+PREP.forEach(([t,d],i)=>{
+  const b=document.createElement('button');
+  b.className='node-btn'; b.textContent=t;
+  b.onclick=()=>{
+    document.querySelectorAll('#prepTree .node-btn').forEach(n=>n.classList.remove('on'));
+    b.classList.add('on');
+    prepReveal.innerHTML = `<b>${t}.</b> ${d}`;
+    prepReveal.classList.add('show');
+  };
+  prepTree.appendChild(b);
+});
+
+const USES = [
+ ["Oral","Solutions/syrups/elixirs/spirits/tinctures for systemic GI absorption — often faster acting than suspensions or solids."],
+ ["Ophthalmic","Sterile, isotonic, buffered (pH 7.4), viscous eye preparations — small volume drops or large volume lens/cleaning solutions."],
+ ["Parenteral","Injectable routes (IV, IM, SC, ID, IS, IA…) — must be safe, sterile, pyrogen-free, clear, stable and isotonic."],
+ ["Nasal","Adrenergic decongestants on nasal mucosa; isotonic, pH 5.5–6.5, limited to 3–5 days of use."],
+ ["Otic","Ear-canal drops for cerumen removal or infection/inflammation/pain treatment; anhydrous glycerin/propylene glycol vehicles."],
+ ["Other","Dental/mouthwash/gargle, vaginal, retention enema, Halazone (water disinfection), potassium permanganate (topical anti-infective)."],
+];
+const useHex = document.getElementById('useHex');
+const useReveal = document.getElementById('useReveal');
+USES.forEach(([t,d])=>{
+  const b=document.createElement('div');
+  b.className='hex'; b.textContent=t;
+  b.onclick=()=>{
+    document.querySelectorAll('#useHex .hex').forEach(n=>n.classList.remove('on'));
+    b.classList.add('on');
+    useReveal.innerHTML = `<b>${t}.</b> ${d}`;
+    useReveal.classList.add('show');
+  };
+  useHex.appendChild(b);
+});
+
+const VOLS = [
+ ["IV", 100, "Injected directly into a vein — essentially unlimited volume via infusion. Rapid, intense response; restricted to solutions; not recoverable once given."],
+ ["IM", 45, "Into skeletal muscle (pelvic/arm), 2–5 mL. Slower onset than IV, prolonged action; absorption depends on drug release & blood flow."],
+ ["IS", 90, "Into the spinal canal, up to 10 mL."],
+ ["SC", 20, "Beneath the skin (alveolar region), about 2 mL. Slow onset, simple to administer — e.g. insulin."],
+ ["ID", 5, "Between skin layers, about 0.2 mL. Local distribution, slow absorption — vaccines & diagnostic tests."],
+ ["IA", 15, "Directly into an artery — needs a surgical operation; used to target organs or deliver anti-neoplastic drugs."],
+];
+const volBars = document.getElementById('volBars');
+const volReveal = document.getElementById('volReveal');
+VOLS.forEach(([t,pct,d])=>{
+  const row=document.createElement('div');
+  row.className='bar-row';
+  row.innerHTML = `<div class="bar-label">${t}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>`;
+  row.onclick=()=>{
+    document.querySelectorAll('.bar-row').forEach(r=>r.classList.remove('on'));
+    row.classList.add('on');
+    volReveal.innerHTML = `<b>${t}.</b> ${d}`;
+    volReveal.classList.add('show');
+  };
+  volBars.appendChild(row);
+});
+
+const OPHS = [
+ ["Sterility + Preservative","Autoclave 121°C/15min (or filter/gas/rays if unstable). Multi-dose needs preservative; single-dose surgical solutions skip it (irritant to open tissue)."],
+ ["Isotonicity","Eye tolerates 0.6–2% tonicity. Hypertonic → shrinkage; hypotonic → swelling. 1.9% boric acid ≈ 0.9% NaCl."],
+ ["Buffering","Target pH 7.4. Boric acid buffer (<pH5) or phosphate buffer (pH 5.9–8.0, avoid with pilocarpine/homatropine)."],
+ ["Viscosity","15–25 cps ideal; 1% methylcellulose ≈ 25 cps and doubles as tear replacement."],
+ ["Proper Packaging","Glass (alkaline leaching raises pH) vs plastic (may react with preservative). Fixed dropper preferred over screw dropper."],
+];
+const ophWheel = document.getElementById('ophWheel');
+const ophReveal = document.getElementById('ophReveal');
+OPHS.forEach(([t,d])=>{
+  const s=document.createElement('div');
+  s.className='spoke'; s.textContent=t;
+  s.onclick=()=>{
+    document.querySelectorAll('#ophWheel .spoke').forEach(n=>n.classList.remove('on'));
+    s.classList.add('on');
+    ophReveal.innerHTML = `<b>${t}.</b> ${d}`;
+    ophReveal.classList.add('show');
+  };
+  ophWheel.appendChild(s);
+});
+
+/* ===================== 3. MINI MAP ===================== */
+const TOPICS = [
+ ["Preparation of Solutions", `<h3>Preparation of Solutions</h3><ul>
+   <li>Solution prepared by <b>simple solution</b>.</li>
+   <li>Solution prepared by <b>simple solution with sterilization</b>.</li>
+   <li>Solution prepared by <b>chemical reaction</b>.</li>
+   <li>Solution prepared by <b>extraction</b>.</li></ul>`],
+ ["Simple Solution", `<h3>Solution Prepared by Simple Solution</h3>
+   <p>The easiest and simplest method of preparation. When a solution can be prepared either by simple solution or by chemical reaction, simple solution is preferred.</p>
+   <p>Example: Ca(OH)₂ solution (lime water) — by simple solution: dissolve Ca(OH)₂ in water. By chemical reaction: CaO + H₂O → Ca(OH)₂.</p>
+   <p><b>Examples:</b> Amaranth solution USP 1% (coloring agent), Gentian violet solution USP 1% (topical anti-infective, hydroalcoholic), Iodine solution NF (skin/surgical disinfectant), Tolnaftate solution USP 1% (non-aqueous vehicle, PEG 400), Clindamycin phosphate topical solution (acne vulgaris).</p>`],
+ ["Simple Solution + Sterilization", `<h3>Solution Prepared by Simple Solution with Sterilization</h3>
+   <p><b>A. Anti-coagulants:</b> Heparin solution USP — sterile solution of 75,000 units sodium heparin in sodium chloride injection. Citrate-phosphate-dextrose solution — 3% citric acid, 26.3% sodium citrate, 2.22% sodium biphosphate, 25.5% dextrose.</p>
+   <p><b>B. Irrigating solution:</b> flushes/bathes wounds or surgical tissue — must be sterile. E.g. 15% amino acetic acid in water for injection, used in prostatectomy.</p>
+   <p><b>C. Physiologic solutions:</b> Ringer's solution (NF) — isotonic: 6.6% NaCl, 0.3% KCl, 0.33% CaCl₂ in purified water. Cannot be used parenterally (solvent is purified water, not water for injection). Also called trichloride solution.</p>`],
+ ["Chemical Reaction", `<h3>Solution Prepared by Chemical Reaction</h3>
+   <p>Chosen when: (1) the pure solute cannot dissolve from a solid state any other way — e.g. Aluminum subacetate (astringent, wet dressing of eczema); (2) the active constituent isn't obtainable/usable except as a solution — e.g. Formaldehyde solution (formalin, disinfectant) and Hydrogen peroxide solution (topical anti-infective, wound cleaning, ear-wax softening); (3) a desired by-product forms — e.g. Magnesium citrate (cathartic).</p>`],
+ ["Extraction", `<h3>Solution Prepared by Extraction</h3>
+   <p>Example: Epinephrine solution (adrenalin chloride USP), diluted to 1:1000 in purified water, prepared with the help of hydrochloric acid. Used as a vasoconstrictor to raise blood pressure, prevent hemorrhage, and prolong the action of local anesthetics in dentistry.</p>`],
+ ["Uses of Solutions", `<h3>Uses of Solutions</h3><ul>
+   <li>Oral</li><li>Ophthalmic</li><li>Parenteral</li><li>Nasal</li><li>Otic</li><li>Other</li></ul>`],
+ ["Oral Solutions", `<h3>Oral</h3>
+   <p>Oral solutions, syrups, elixirs, spirits and tinctures are used for the specific systemic effects of the medicinal agent (GI absorption into systemic circulation) — often faster than suspensions or solid dosage forms.</p>
+   <p>The pharmacist may: dispense a commercial oral solution, dilute a concentration (e.g. pediatric form of an adult product), prepare a solution by reconstituting a dry powder mixture, or extemporaneously compound from bulk ingredients. Knowledge of solubility/stability guides advice on mixing with juice, milk or other beverages.</p>
+   <p><b>Oral Rehydration Solutions:</b> rapid fluid loss in diarrhea (mostly from the extracellular fluid compartment) can progress to hypovolemic shock. ORS is effective for mild depletion (5–10% of body weight), available OTC, inexpensive. A typical liter contains 45 mEq Na⁺, 20 mEq K⁺, 35 mEq Cl⁻, 30 mEq citrate, 25 g dextrose. Reconstitute powder with the exact water amount; never mix with milk or fruit juice.</p>
+   <p><b>Magnesium Citrate Oral Solution</b> ("citrate of magnesia"): colorless-to-yellow effervescent, sweet/acidulous, lemon-flavored. Prepared by reacting magnesium carbonate with excess citric acid, flavoring/sweetening with lemon oil and syrup, filtering with talc, then carbonating with potassium or sodium bicarbonate. It's a good mold-growth medium, so boiling water is used throughout preparation and rinsing, and the final solution may be sterilized. Used as a saline cathartic; the citric acid, lemon oil, syrup, carbonation and refrigeration all improve palatability.</p>`],
+ ["Ophthalmic Solutions", `<h3>Ophthalmic</h3>
+   <p>Sterile solutions applied to the eye for local or systemic (interior) effect. Should be isotonic, buffered to pH 7.4, viscous, and packaged in the proper volume — small as eye drops, large as cleaning/contact-lens solutions.</p>
+   <p><b>Requirements:</b> (1) Sterility + antimicrobial agent — autoclave 121°C/15 min, or micro-filter/gases/rays if unstable to heat; (2) multi-dose solutions must contain a preservative; (3) surgical/traumatized-eye solutions need none, being single-dose and because preservatives irritate open tissue.</p>
+   <p><b>Preservative properties:</b> effective at the concentration used, inert with drug/container, non-adsorbing to the container wall, stable. Examples: Benzalkonium chloride 0.004–0.01% w/v (ion-exchanges with cell-wall carboxyl groups, lyses microorganisms); Chlorobutanol 0.25–0.5% w/v (hydrolyzes at autoclave/room temp, releasing HCl — needs a buffer); Thiomersal 0.001–0.5% w/v; Methyl/propyl parabens 0.05–0.01% w/v (antibacterial + antifungal).</p>
+   <p><b>Isotonicity:</b> eye tolerates 0.6–2% tonicity without marked discomfort. Hypertonic → cell shrinkage; hypotonic → swelling. 1.9% boric acid gives the same osmotic pressure as 0.9% NaCl.</p>
+   <p><b>Buffering:</b> keeps pH close to lachrymal fluid's 7.4 to reduce discomfort, control stability, and control therapeutic activity. USP buffers: boric acid (pH <5, suits cocaine/phenylephrine/pilocarpine/tetracaine) and phosphate (pH 5.9–8.0, suits many drugs except pilocarpine/homatropine salts, which are unstable in it).</p>
+   <p><b>Viscosity:</b> should be high enough to prolong eye contact and reduce drainage; 1% methylcellulose gives ~25 cps. Optimal range 15–25 cps.</p>
+   <p><b>Packaging:</b> glass (alkaline substances may leach out, raising pH) or plastic (may interact with preservative or allow separation of some agents). Fixed dropper is preferred over screw dropper — lower contamination risk.</p>`],
+ ["Parenteral Solutions", `<h3>Parenteral</h3>
+   <p>Injectable routes, used alone or diluted. General requirements: safety, sterility, freedom from pyrogen, clarity, stability, isotonicity.</p>
+   <p><b>Routes:</b> IV — into a vein, unlimited volume (infusion); IM — into skeletal muscle, 2–5 mL; SC — beneath skin (alveolar region), 2 mL; ID — between skin layers, 0.2 mL; IS — spinal canal, up to 10 mL; IA — directly into an artery. Drugs may also be injected intra-articular, intra-synovial, intrathecal, or (in emergencies) intra-cardiac.</p>
+   <p><b>IV advantages:</b> very rapid response (drug goes directly to blood), great intensity of response (no drug loss), less irritant, greater stability with some drugs vs IM, usable for large-volume fluids. <b>IV disadvantages:</b> restricted to solutions, may cause hemolysis (avoid by slow injection), drug can't be recovered once injected.</p>
+   <p><b>IM properties:</b> easier than IV; usable for solutions, suspensions, emulsions; drug stays in muscle and diffuses slowly → slower onset, prolonged action; absorption depends on drug release and blood flow; salt forms absorb faster than free forms. Absorption sequence: solution &gt; aqueous suspension &gt; oily solution &gt; oily suspension &gt; oily suspension with thickening agent.</p>
+   <p><b>SC properties:</b> slow onset, simple to administer; absorption affected by concentration, solubility, blood flow. Example: soluble insulin (fast absorption, short duration) vs insoluble protamine zinc insulin (slow onset, prolonged action).</p>
+   <p><b>ID properties:</b> local distribution, slow absorption; used for vaccines and diagnostic tests. <b>IA properties:</b> needs a surgical operation; used to target a drug to an organ for diagnostic tests, and for anti-neoplastic drugs.</p>`],
+ ["Nasal Solutions", `<h3>Nasal</h3>
+   <p>Contain adrenergic agents for decongestant activity on the nasal mucosa (local or systemic effect). Example: Phenylephrine HCl solution USP (0.125–10%), a vasoconstrictor isotonic solution.</p>
+   <p>Approximately equal to 0.9% NaCl in tonicity, buffered to the normal nasal-fluid pH range of 5.5–6.5, stabilized and preserved as required.</p>
+   <p>Commercial solutions for pediatric and adult use are best limited to short periods (no longer than 3–5 days). Patients should not exceed the recommended dose/frequency — e.g. phenylephrine every 3–4 hr, oxymetazoline every 12 hr.</p>`],
+ ["Otic Solutions", `<h3>Otic</h3>
+   <p>Placed in the ear canal by drops or small amounts to remove excess cerumen (ear wax) or treat ear infection, inflammation, or pain. Cerumen is a mix of sweat/sebaceous gland secretions with trapped epithelial cells, hair, dust and foreign bodies; excess accumulation can cause itching, pain, impaired hearing.</p>
+   <p><b>Cerumen-removing preparations:</b> light mineral oil, vegetable oils, hydrogen peroxide; synthetic surfactant solutions (e.g. triethanolamine polypeptide oleate condensate 10% ear drop in propylene glycol, emulsifies/disperses cerumen for water-irrigation removal); carbamide peroxide in glycerin/propylene glycol (releases oxygen on contact with cerumen, disrupting the impacted wax).</p>
+   <p><b>Vehicle:</b> anhydrous glycerin or propylene glycol. <b>Preservatives:</b> Chlorobutanol 0.5%, Thimerosal 0.01%, paraben combinations. <b>Antioxidant:</b> sodium bisulphate. <b>Packaging:</b> small 5–15 mL glass or plastic containers with a dropper.</p>`],
+ ["Other Official Solutions", `<h3>Other Official Solutions</h3><ul>
+   <li>Topical oral (dental) solutions</li>
+   <li>Mouthwashes and gargles</li>
+   <li>Vaginal solution</li>
+   <li><b>Retention enema</b> — injecting a solution into the rectum and holding it for a specific period of time.</li>
+   <li><b>Halazone tablets for solution</b> — disinfectant for sterilizing drinking water; not intended to be swallowed.</li>
+   <li><b>Potassium permanganate tablet for solution</b> — topical anti-infective; only distilled water should be used in preparation.</li></ul>`],
+ ["Concentration Expressions", `<h3>Important Note About Solutions — Concentration Expressions</h3>
+   <p>Most pharmaceutical solutions are unsaturated with solute — the amount dissolved is usually well below the solvent's capacity. Strength is usually expressed as percent strength; very dilute preparations may use ratio strength.</p>
+   <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+   <tr style="background:#EDE8D9;"><td style="padding:6px;border:1px solid #C9C0A6;"><b>%w/v</b></td><td style="padding:6px;border:1px solid #C9C0A6;">g of constituent per 100 mL preparation (1% w/v = 1 g / 100 mL)</td></tr>
+   <tr><td style="padding:6px;border:1px solid #C9C0A6;"><b>%v/v</b></td><td style="padding:6px;border:1px solid #C9C0A6;">mL of constituent per 100 mL preparation</td></tr>
+   <tr style="background:#EDE8D9;"><td style="padding:6px;border:1px solid #C9C0A6;"><b>%w/w</b></td><td style="padding:6px;border:1px solid #C9C0A6;">g of constituent per 100 g preparation</td></tr>
+   <tr><td style="padding:6px;border:1px solid #C9C0A6;"><b>ratio w/v</b></td><td style="padding:6px;border:1px solid #C9C0A6;">g of constituent per stated mL (1:1000 w/v = 1 g / 1000 mL)</td></tr>
+   <tr style="background:#EDE8D9;"><td style="padding:6px;border:1px solid #C9C0A6;"><b>ratio v/v</b></td><td style="padding:6px;border:1px solid #C9C0A6;">mL of constituent per stated mL</td></tr>
+   <tr><td style="padding:6px;border:1px solid #C9C0A6;"><b>ratio w/w</b></td><td style="padding:6px;border:1px solid #C9C0A6;">g of constituent per stated g preparation</td></tr>
+   </table>`],
+ ["Hastening Dissolution", `<h3>Techniques &amp; Cautions for Dissolution</h3>
+   <p>To hasten dissolution a pharmacist may: apply heat, reduce the solute's particle size, use a solubilizing agent, or subject ingredients to vigorous agitation.</p>
+   <p>Most chemical agents dissolve better warm (endothermic dissolution), but pharmacists are cautious with heat — many medicinal agents degrade at elevated temperature, offsetting any speed gained. Heat is avoided for volatile solutes or volatile solvents (e.g. alcohol), since it drives them off into the atmosphere.</p>
+   <p>Certain agents — notably calcium salts — dissolve exothermically (give off heat), so added heat actually discourages solution formation. Example: Calcium hydroxide is soluble to 140 mg/100 mL at 25°C (77°F) but 170 mg/100 mL at 15°C (59°F) — more soluble when cooler. This underlies Calcium Hydroxide Topical Solution, USP, where preparation/storage temperature affects the final concentration.</p>`],
+];
+const mmapList = document.getElementById('mmapList');
+const mmapReader = document.getElementById('mmapReader');
+TOPICS.forEach(([t,html],i)=>{
+  const b=document.createElement('button');
+  b.textContent = t;
+  b.onclick=()=>{
+    document.querySelectorAll('#mmapList button').forEach(n=>n.classList.remove('on'));
+    b.classList.add('on');
+    mmapReader.innerHTML = html;
+    if(window.innerWidth < 760){ mmapReader.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+  };
+  mmapList.appendChild(b);
+});
+
+/* ===================== 4. FLASH CARDS (3 DIFFICULTY LEVELS) ===================== */
+const FLASHCARDS_EASY = [
+["What are the four methods of preparing solutions?","Simple solution; simple solution with sterilization; chemical reaction; extraction."],
+["What is the easiest and simplest method of preparing a solution?","Simple solution."],
+["What is Ca(OH)2 solution commonly known as?","Lime water."],
+["Write the chemical-reaction equation for preparing lime water.","CaO + H2O → Ca(OH)2."],
+["What is Amaranth solution USP 1% used for?","As a coloring agent to impart color to clear liquid preparations."],
+["What is Gentian violet solution USP 1% used for?","As a topical local anti-infective."],
+["What is Iodine solution NF used for?","As a local anti-infective — skin and surgical disinfectant."],
+["What vehicle is used for Tolnaftate solution USP 1%?","A non-aqueous homogeneous vehicle of polyethylene glycol 400."],
+["What is Clindamycin phosphate topical solution used for?","Treatment of acne vulgaris."],
+["How many units of sodium heparin does Heparin solution USP contain?","75,000 units, in sodium chloride injection."],
+["What does Citrate, phosphate, dextrose solution contain?","3% citric acid, 26.3% sodium citrate, 2.22% sodium biphosphate, and 25.5% dextrose."],
+["What concentration of amino acetic acid is used as an irrigating solution in prostatectomy?","15% amino acetic acid in water for injection."],
+["What does Ringer's solution (NF) contain?","6.6% NaCl, 0.3% KCl, and 0.33% CaCl2 diluted in purified water."],
+["What is another name for Ringer's solution?","Trichloride solution."],
+["Give an example of a solute that cannot dissolve directly and needs chemical reaction.","Aluminum subacetate."],
+["What is Aluminum subacetate used for?","As an astringent in wet dressing of eczema."],
+["What is Formaldehyde solution also called?","Formalin."],
+["What is Formaldehyde solution (formalin) used for?","As a disinfectant."],
+["What is Hydrogen peroxide solution used for?","As a topical anti-infective to clean wounds, and as a softening agent for ear wax in certain dilution."],
+["Which cathartic is a desired by-product of a chemical reaction?","Magnesium citrate."],
+["How is Epinephrine solution (adrenalin chloride USP) prepared?","By extraction, with the help of hydrochloric acid."],
+["To what dilution is Epinephrine solution prepared?","1:1000 in purified water."],
+["What is Epinephrine solution used for?","As a vasoconstrictor to increase blood pressure, prevent hemorrhage, and prolong local anesthetic action for dentistry."],
+["List the six uses of solutions.","Oral, Ophthalmic, Parenteral, Nasal, Otic, Other."],
+["Name five oral liquid dosage forms mentioned in the lecture.","Solutions, syrups, elixirs, spirits, and tinctures."],
+["What kind of effect do oral solutions provide?","Systemic effects, via absorption from the GI tract into the systemic circulation."],
+["What level of dehydration are oral rehydration solutions (ORS) usually effective for?","Mild volume depletion — 5% to 10% of body weight."],
+["How much dextrose does a liter of typical ORS contain?","25 g."],
+["What should ORS not be mixed with?","Other electrolyte-containing liquids, such as milk or fruit juices."],
+["What is Magnesium Citrate Oral Solution commonly called?","Citrate of magnesia."],
+["What flavor does Magnesium Citrate Oral Solution have?","A sweet, acidulous taste with a lemon flavor."],
+["What is Magnesium Citrate Oral Solution used for?","As a saline cathartic."],
+["List the four required properties of an ophthalmic solution.","Isotonic, buffered to pH 7.4, viscous, and properly packaged volume."],
+["At what temperature and time are most ophthalmic solutions autoclaved?","121°C (250°F) for 15 minutes."],
+["Why must multi-dose ophthalmic solutions contain a preservative?","So any microorganism accidentally introduced shows no growth."],
+["What is Benzalkonium chloride's usual concentration in eye drops?","0.004–0.01% w/v."],
+["What type of compound is Benzalkonium chloride?","A quaternary ammonium compound."],
+["At what concentration is Chlorobutanol used in ophthalmic solutions?","0.25–0.5% w/v."],
+["At what concentration is Thiomersal used in ophthalmic solutions?","0.001–0.5% w/v."],
+["What tonicity range can the eye tolerate without marked discomfort?","0.6–2%."],
+["What concentration of boric acid produces the same osmotic pressure as 0.9% NaCl?","1.9%."],
+["To what pH is an ophthalmic solution ideally buffered?","pH 7.4 (lacrimal fluid pH)."],
+["What pH does the boric acid ophthalmic buffer provide?","Slightly below 5."],
+["What pH range does the phosphate ophthalmic buffer provide?","5.9–8.0."],
+["What is the optimal viscosity range for ophthalmic solutions?","15–25 cps."],
+["Which viscosity-increasing agent is commonly used in eye drops?","1% methyl cellulose."],
+["Which dropper type is preferred for ophthalmic solutions?","The fixed dropper."],
+["List the six general requirements of parenteral preparations.","Safety, sterility, freedom from pyrogens, clarity, stability, and isotonicity."],
+["What is the typical injection volume for intramuscular (IM) injection?","2–5 mL."],
+["What is the typical injection volume for subcutaneous (SC) injection?","About 2 mL."],
+["What is the typical injection volume for intradermal (ID) injection?","About 0.2 mL."],
+["What is the maximum volume for intraspinal (IS) injection?","Up to 10 mL."],
+["Which parenteral route allows an essentially unlimited volume (infusion)?","Intravenous (IV)."],
+["Give an example of a drug given by the subcutaneous route.","Insulin."],
+["Intradermal injections are mainly used for what purpose?","Vaccines and diagnostic tests."],
+["What concentration range is used for Phenylephrine HCl nasal solution USP?","0.125–10%."],
+["To what pH range should nasal solutions be buffered?","5.5–6.5."],
+["For how long, at most, should nasal decongestant solutions be used?","No longer than 3–5 days."],
+["What is cerumen?","Ear wax — a combination of secretions of the sweat and sebaceous glands of the external auditory canal."],
+["What vehicle is commonly used in ear preparations?","Anhydrous glycerin or propylene glycol."],
+];
+
+const FLASHCARDS_MEDIUM = [
+["Why is simple solution preferred over chemical reaction when both routes can prepare the same drug?","Because simple solution is the easier, simpler method — chemical reaction is only chosen for specific reasons (insolubility, form limitations, or desired by-products)."],
+["Give the chemical-reaction route to preparing lime water and note which route is actually preferred.","CaO + excess H2O → Ca(OH)2 by shaking lime with water; still, dissolving Ca(OH)2 directly (simple solution) is the preferred method."],
+["Name the three reasons chemical reaction is chosen over simple solution, with one example each.","(1) Solute won't dissolve as a solid — Aluminum subacetate; (2) drug only usable as a solution — Formaldehyde/H2O2; (3) a desired by-product forms — Magnesium citrate."],
+["Why can't Ringer's solution (NF) be used as a parenteral solution?","Because its solvent is purified water, not water for injection, so it isn't suitable for direct injection."],
+["Compare the sterilization requirement of anticoagulant/irrigating solutions to simple solutions like Amaranth solution.","Anticoagulant and irrigating solutions must be sterile because they contact sensitive tissues/blood, unlike simple solutions like Amaranth that don't need sterility."],
+["Why must irrigating solutions be sterilized?","Because they are used to flush or bathe wounds or surgical tissues — sensitive areas of the body."],
+["What connects Formaldehyde and Hydrogen peroxide solutions in terms of preparation rationale?","Both are prepared by chemical reaction because the active constituent isn't obtainable or usable in any other form besides solution."],
+["Explain why oral rehydration solutions (ORS) have reduced complications compared to parenteral electrolyte solutions.","Because ORS are non-invasive, OTC, inexpensive, and effective for mild dehydration, avoiding the risks of parenterally administered electrolyte solutions."],
+["What physiological process leads to hypovolemic shock during severe diarrhea?","The small intestine secretes more fluid/electrolytes than the large intestine can reabsorb; the resulting fluid loss (mostly from the extracellular compartment) progressively reduces blood volume."],
+["Why should ORS powder not be mixed with milk or fruit juice?","Because these beverages contain additional electrolytes that would disturb the carefully balanced electrolyte composition of the ORS."],
+["Why is Magnesium Citrate Oral Solution prone to instability, and how is this addressed?","It provides an excellent medium for mold growth, so the liquid is heated to boiling and boiling water is used throughout preparation and container rinsing to kill mold spores; the final solution may also be sterilized."],
+["How do the flavoring components of Magnesium Citrate Solution improve patient compliance?","Citric acid, lemon oil, syrup, carbonation, and refrigeration make an otherwise bitter saline cathartic pleasant to take in a large volume."],
+["Why is preservative omitted from ophthalmic solutions used in eye surgery?","Because they are single-dose products, and preservatives would irritate open/traumatized eye tissue."],
+["Explain how Benzalkonium chloride kills microorganisms.","As a quaternary ammonium compound, it exchanges ions with the carboxyl groups of the microbial cell wall, causing lysis of the microorganism."],
+["Why is Chlorobutanol problematic as an ophthalmic preservative, and how is this managed?","It hydrolyzes/decomposes at autoclave temperature and slowly at room temperature, releasing hydrochloric acid that changes pH and stability; an efficient buffer is needed to control pH."],
+["What happens to eye tissue if an ophthalmic solution is hypertonic versus hypotonic?","Hypertonic solutions draw solvent out of cells, causing shrinkage; hypotonic solutions cause swelling — both cause discomfort."],
+["Why is boric acid, not sodium chloride, sometimes used to adjust ophthalmic tonicity?","Because 1.9% boric acid produces the same osmotic pressure as 0.9% NaCl, so it can substitute for NaCl when tonicity adjustment is needed."],
+["Name the three benefits of buffering ophthalmic solutions.","Reducing patient discomfort, controlling stability, and controlling therapeutic activity."],
+["Which drugs are suited to the boric acid ophthalmic buffer, and which pH does it provide?","Soluble salts of cocaine, phenylephrine, pilocarpine, and tetracaine; pH slightly below 5."],
+["Which drugs should avoid the phosphate ophthalmic buffer, and why?","Salts of pilocarpine and homatropine, because they are unstable in this buffer."],
+["Why must ophthalmic solutions be viscous, and how is this typically achieved?","To keep the drug in contact with the eye tissue longer and reduce drainage; achieved with about 1% methyl cellulose, giving ~25 cps viscosity."],
+["Compare the disadvantages of glass versus plastic containers for ophthalmic solutions.","Glass leaches alkaline substances that raise the solution's pH; plastic may interact with the preservative or allow separation of some medicinal agents."],
+["Why is a fixed dropper preferred over a screw dropper for ophthalmic solutions?","Because a fixed dropper carries a lower chance of introducing microorganisms into the solution."],
+["List three advantages of IV injection over other parenteral routes.","Rapid response since the drug reaches blood directly, no loss of drug (greater intensity), and suitability for large-volume fluids."],
+["What is a key disadvantage of IV injection regarding dosing errors?","The drug cannot be recovered once injected, so an accidental overdose is difficult to correct."],
+["How can hemolysis from IV injection be minimized?","By administering the injection slowly."],
+["Rank the absorption speed of IM formulation types from fastest to slowest.","Solution > aqueous suspension > oily solution > oily suspension > oily suspension with thickening agent."],
+["Compare soluble insulin and protamine zinc insulin given subcutaneously.","Soluble insulin has fast absorption but short duration of action; insoluble protamine zinc insulin has a slow onset but prolonged action."],
+["Why does IM injection generally have a slower onset than IV?","Because the drug stays in the muscle and diffuses slowly into the bloodstream before it can act."],
+["Which factors affect drug absorption from subcutaneous injection?","Concentration, solubility, and blood flow."],
+["Why is intra-arterial injection reserved for specific special uses?","Because it requires a surgical operation and is used for targeting a drug directly into an organ (e.g., diagnostic tests, anti-neoplastic drugs)."],
+["Why must nasal decongestant solutions be buffered and made isotonic?","To match the pH (5.5–6.5) and tonicity (~0.9% NaCl equivalent) of natural nasal fluids, minimizing irritation to nasal mucosa."],
+["Why should nasal decongestant use be limited to 3–5 days?","To avoid rebound congestion and other complications from prolonged use of adrenergic decongestants."],
+["Compare the dosing frequency of phenylephrine and oxymetazoline nasal drops.","Phenylephrine is used every 3–4 hours; oxymetazoline is used every 12 hours (longer-acting)."],
+["How does carbamide peroxide help remove impacted earwax?","On contact with cerumen, it releases oxygen, which disrupts the integrity of the impacted wax, making it easier to remove."],
+["How do synthetic surfactant ear drops (e.g., triethanolamine polypeptide oleate condensate) help remove cerumen?","Their cerumenolytic activity emulsifies and disperses the cerumen, facilitating its removal by subsequent water irrigation."],
+["Why is anhydrous glycerin/propylene glycol preferred as a vehicle for ear preparations?","These essentially water-free vehicles help soften/disperse cerumen and limit microbial growth in the ear canal."],
+["What can excessive cerumen accumulation cause?","Itching, pain, and impaired hearing."],
+["Differentiate %w/v from %w/w with examples.","%w/v = grams of constituent per 100 mL of preparation (1% w/v = 1 g/100 mL); %w/w = grams per 100 g of preparation (1% w/w = 1 g/100 g) — the denominator differs (volume vs. weight)."],
+["What does a 1:1000 v/v ratio strength mean, and how does it differ from 1:1000 w/v?","1:1000 v/v means 1 mL of constituent per 1000 mL of preparation (both volumes); 1:1000 w/v means 1 g of constituent (a weight) per 1000 mL of preparation."],
+["Why are pharmaceutical solutions usually unsaturated with solute?","Because the amounts of solute dissolved are typically well below the solvent's actual dissolving capacity."],
+["Name four techniques a pharmacist can use to hasten dissolution.","Applying heat, reducing the solute's particle size, using a solubilizing agent, and vigorous agitation."],
+["Why are most chemical agents more soluble at elevated temperatures?","Because dissolution is usually an endothermic reaction, and heat energy is used to enhance dissolution."],
+["Why are pharmacists cautious about applying heat to hasten dissolution?","Because many medicinal agents are destroyed/degraded at elevated temperature, which can completely offset the benefit of faster dissolution."],
+["Why should heat be avoided when dissolving volatile solutes or using a volatile solvent (like alcohol)?","Because heat would encourage loss of the volatile substance to the atmosphere."],
+["Why is heat sometimes counterproductive for dissolving calcium salts?","Because calcium salts often dissolve exothermically (releasing heat), so adding heat actually discourages further dissolution."],
+["Compare calcium hydroxide's solubility at 25°C versus 15°C, and explain the reason.","140 mg/100 mL at 25°C versus 170 mg/100 mL at 15°C — it's more soluble when cooler because its dissolution is exothermic."],
+["How does temperature affect the concentration of Calcium Hydroxide Topical Solution, USP?","Since calcium hydroxide's solubility decreases as temperature rises, the temperature at which the solution is prepared or stored directly affects its final concentration."],
+["Why does Iodine solution NF need to be used specifically as a solution rather than another dosage form?","Because it functions as a local anti-infective/disinfectant that must directly contact skin or surgical sites in liquid form for effective antisepsis."],
+["What does the pharmacist's task of 'extemporaneous compounding' mean for oral solutions?","Preparing an oral solution from bulk ingredients at the time it is needed, rather than dispensing a pre-made commercial product or reconstituting a powder."],
+];
+
+const FLASHCARDS_HARD = [
+["A drug can be prepared either by dissolving Ca(OH)2 directly in water, or via CaO + H2O. Explain why simple solution is favored despite both giving the same final compound.","Simple solution requires fewer processing steps than triggering and controlling a chemical reaction; chemical reaction routes are reserved for cases where simple solution isn't feasible (insoluble solids, drugs only stable as solution, or a valuable by-product) — none of which give chemical reaction an advantage here, so the simpler method wins."],
+["A solid, poorly water-soluble drug must be delivered as a clear disinfectant solution, similar to formalin and H2O2. Which preparation method fits, and why?","Chemical reaction — because the active constituent is not obtainable or usable in a form other than solution, the same rationale that justifies preparing formaldehyde and hydrogen peroxide solutions this way."],
+["Explain why Ringer's solution NF cannot simply be relabeled for IV use even though it is already isotonic.","Isotonicity alone doesn't guarantee parenteral suitability — Ringer's solution NF uses purified water (not water for injection), so it fails the sterility/pyrogen-free standard essential for any parenteral product."],
+["A multi-dose Chlorobutanol-preserved eye drop shows drifting pH over its shelf life. Explain the mechanism and the fix.","Chlorobutanol slowly hydrolyzes (faster at autoclave temperature), releasing hydrochloric acid that shifts pH downward over time; an efficient buffer is needed to resist this ongoing acid production."],
+["A pilocarpine eye drop is formulated in phosphate buffer at pH 7.0. Identify and correct the error.","Error — pilocarpine (and homatropine) salts are unstable in phosphate buffer; the correct choice is boric acid buffer (pH slightly below 5), which the USP designates as suitable for pilocarpine."],
+["Explain why boric acid can replace sodium chloride for ophthalmic tonicity adjustment.","Different solutes can produce the same osmotic pressure at different concentrations; 1.9% boric acid is osmotically equivalent to 0.9% NaCl, so it can substitute for NaCl, especially when boric acid is already present as a buffer."],
+["A patient's post-surgical eye drops are labeled 'single-dose, no preservative.' Explain why this is correct, not a defect.","Single-dose products are used once, so contamination between uses isn't a concern, and preservatives would irritate open/damaged eye tissue — omitting them is the correct, safer choice."],
+["Compare how glass and plastic ophthalmic containers can each compromise a preserved eye drop over its shelf life.","Glass can leach alkaline substances that raise the solution's pH; plastic can adsorb/interact with the preservative or allow separation of some medicinal agents — both can silently reduce product safety/efficacy."],
+["A drug needs rapid onset, full bioavailability, and low irritation, but is unstable once mixed for infusion. Which route best fits, and what's the key trade-off?","Intravenous injection — rapid onset, no drug loss, low irritancy — but once injected the drug cannot be recovered, so dosing/compatibility errors are hard to correct, and it's restricted to true solution form."],
+["Why would a formulator deliberately choose an oily suspension with thickening agent for IM injection, despite it being the slowest-absorbed IM type?","To intentionally create a prolonged depot effect — trading a slower onset for a longer duration of action from a single IM dose."],
+["Contrast the pharmacokinetic rationale for soluble insulin versus protamine zinc insulin given subcutaneously.","Soluble insulin dissolves and diffuses quickly for fast onset/short duration (prompt control); protamine zinc (insoluble) insulin dissolves slowly from its depot, giving slow onset but prolonged, sustained action."],
+["A drug must reach a tumor at high local concentration with minimal systemic exposure via a surgical procedure. Which route fits, and why is it invasive?","Intra-arterial injection — targets a drug directly into an organ, but arteries are deeper, higher-pressure vessels than veins, so safe access requires a surgical operation."],
+["Why would a formulator avoid intradermal injection for a drug needing rapid systemic effect?","Intradermal injection produces local distribution with slow absorption (used for vaccines/diagnostic tests), unsuitable for fast, whole-body drug action."],
+["Justify the isotonicity, pH 5.5–6.5, and 3–5 day use limit design choices for a new nasal decongestant.","Isotonicity and matching pH minimize nasal mucosa irritation by mimicking natural nasal fluid; the 3–5 day limit reflects that prolonged use of vasoconstrictors on nasal mucosa is discouraged."],
+["Why does oxymetazoline need only twice-daily dosing while phenylephrine needs 5–6 doses a day for the same complaint?","The two decongestants differ in duration of action — oxymetazoline is longer-acting (~every 12 hours), while phenylephrine has a shorter duration, needing more frequent dosing (every 3–4 hours)."],
+["Compare how carbamide peroxide and synthetic surfactant ear drops resolve impacted cerumen, and which acts chemically versus physically.","Carbamide peroxide chemically disrupts the wax by releasing oxygen on contact; synthetic surfactants physically emulsify/disperse the wax so it can be flushed out by water irrigation."],
+["Explain why ear preparation vehicles are anhydrous, linking this to both cerumen chemistry and microbial control.","An anhydrous vehicle avoids introducing free water (which could support microbial growth in the warm, occluded ear canal) while still interacting with lipid-rich cerumen to soften/loosen it."],
+["Explain why treating '1:1000 w/v' and '1:1000 v/v' as interchangeable can be a meaningful error.","1:1000 w/v is 1 g (weight) per 1000 mL of preparation, while 1:1000 v/v is 1 mL (volume) per 1000 mL — the two are only numerically equal for a substance with a density of exactly 1 g/mL."],
+["Justify why 'most pharmaceutical solutions are unsaturated' is a deliberate formulation choice, not a limitation.","Formulating below saturation avoids solute crystallizing/precipitating if the solution cools or the solvent evaporates slightly during storage, keeping the product stable, clear, and accurately dosed."],
+["A heat-labile, alcohol-soluble drug must not lose its volatile solvent. Which dissolution technique should be avoided, and which prioritized?","Heat should be avoided (it degrades the drug and drives off the volatile alcohol); particle size reduction and vigorous agitation (or a solubilizing agent) should be prioritized instead."],
+["Explain, using endothermic/exothermic reasoning, why heat helps dissolve most drugs but hinders calcium hydroxide.","Most drugs dissolve endothermically, so added heat supplies energy that speeds dissolution; calcium hydroxide dissolves exothermically, so added heat opposes further dissolution and reduces its solubility."],
+["A batch of Calcium Hydroxide Topical Solution, USP was prepared/stored at 25°C instead of 15°C. Predict the effect on concentration.","The batch will be under-strength (about 140 mg/100 mL at 25°C versus 170 mg/100 mL at 15°C), since calcium hydroxide is less soluble at the higher temperature."],
+["Compare the rationale for choosing chemical reaction for Aluminum subacetate solution versus for Magnesium citrate solution.","Aluminum subacetate: the pure solute cannot dissolve directly from a solid state; Magnesium citrate: the reaction generates a desired by-product (the cathartic citrate) — different rationale categories, same overall method."],
+["An eye drop formulator wants to switch preservative from Benzalkonium chloride to Thiomersal. What must be re-verified first?","Effectiveness at the working concentration, inertness with the active drug and container material, no adsorption to the container wall, and chemical stability — all four required preservative properties."],
+["Why is 'properly packaged volume' listed as a distinct ophthalmic requirement, separate from sterility, isotonicity, and viscosity?","Even a sterile, isotonic, appropriately viscous solution must still be packaged in a volume matched to its use — small for eye drops, large for lens-cleaning/irrigation — a usability, not a chemical, requirement."],
+["Why is 'water for injection' specified for a prostatectomy irrigating solution, and what other example illustrates the risk of the wrong water grade?","Irrigating solutions contact open surgical tissue and need parenteral-grade sterility/pyrogen standards; this parallels Ringer's solution NF, which cannot be used parenterally because it uses purified water instead."],
+["Explain why ORS can reduce reliance on IV fluids for most diarrheal dehydration, but not always for severe cases.","ORS works because the gut can still absorb co-transported electrolytes/glucose during mild-to-moderate (5–10% body weight) loss; in severe dehydration/hypovolemic shock, oral absorption may be too slow or intake impossible, requiring IV correction."],
+["A magnesium citrate batch shows mold despite being made entirely with boiling water. What's the likely explanation?","Mold spores were probably introduced after the boiling/heat-kill steps — e.g., during bottling or from a non-sterile final container — since boiling controls contamination during manufacture but not after a later breach."],
+["Why does the lecture pair 'sterility' with 'presence of a preservative' as one combined ophthalmic requirement?","Sterility addresses contamination at manufacture; the preservative protects a multi-dose product from contamination introduced during repeated later use — together covering initial and ongoing microbiological safety."],
+["A paraben-preserved eye drop loses potency faster in a certain plastic bottle than in glass. Explain a plausible, non-defect cause.","The plastic may be adsorbing/interacting with the paraben preservative, gradually depleting its effective concentration — a known limitation of plastic ophthalmic containers, not necessarily a manufacturing defect."],
+["Explain why IM absorption depends on 'drug release and blood flow,' unlike IV drug action.","IM drug must first leave the muscle depot and then be picked up by local blood flow before reaching systemic circulation — two rate-limiting steps that IV bypasses by placing the drug directly into the bloodstream."],
+["Explain the likely reason salt forms of a drug absorb faster than the free form after IM injection.","Salt forms are generally more water-soluble than the free (un-ionized) form, so they dissolve more readily in tissue fluid at the injection site, allowing faster release from the depot and faster absorption."],
+["Justify the buffer choice for a new tetracaine eye drop using the lecture's compatibility data.","Boric acid buffer (pH slightly below 5) is specifically listed as suitable for tetracaine, along with cocaine, phenylephrine, and pilocarpine salts — making it the appropriate choice."],
+["Explain the shared clinical logic behind using intra-arterial injection for both diagnostic imaging and anti-neoplastic drugs.","Both benefit from a high local concentration delivered directly to a specific organ/tumor via its arterial supply while limiting systemic distribution and exposure."],
+["Contrast why heat is avoided with volatile solvents versus why it's avoided with heat-labile drugs, despite the same instruction.","With volatile solvents, heat physically drives the substance off into the atmosphere (a material loss); with heat-labile drugs, heat chemically destroys the drug molecule — a physical problem versus a chemical one."],
+["Design a compatible formulation strategy for a drug needing isotonicity and a specific pH, but unstable in phosphate buffer, using only agents named in the lecture.","Use a boric acid buffer for pH control, and rely on the boric acid itself (~1.9%) to also contribute isotonicity, since it's osmotically equivalent to 0.9% NaCl — avoiding a separate incompatible buffer or tonicity agent."],
+["Explain why 'free from pyrogen' is listed as a separate parenteral requirement from 'sterility.'","Pyrogens (e.g., bacterial endotoxins) can remain in solution and cause fever even after the microorganisms that produced them are killed by sterilization, so a product can be sterile yet still pyrogenic."],
+["Explain why Hydrogen peroxide solution qualifies as 'not usable in a form other than solution,' even though it's a simple chemical compound.","Hydrogen peroxide is unstable as a concentrated or solid form and is only practical to store, dispense, and use safely as a dilute aqueous solution, meeting the lecture's second reason for chemical-reaction/solution preparation."],
+["A patient on mild ORS is not improving and shows signs of worsening dehydration. Using the lecture's threshold, when should therapy escalate to IV?","When fluid loss exceeds the mild 5–10% of body weight that ORS is designed for, or the patient progresses toward hypovolemic shock — that is when escalation to parenteral electrolyte therapy is warranted."],
+["Synthesize the three reasons for choosing chemical reaction over simple solution into a single decision framework.","Ask: (1) Can the pure solute dissolve directly as a solid? If not, use chemical reaction. (2) Is the constituent usable in any form besides a solution? If not, prepare via reaction. (3) Does the reaction yield a valuable by-product? If so, chemical reaction may be preferred even if simple solution were possible — otherwise default to simple solution."],
+];
+
+const FC_LEVELS = {easy: FLASHCARDS_EASY, medium: FLASHCARDS_MEDIUM, hard: FLASHCARDS_HARD};
+let fcLevel = 'easy';
+let fcState = FC_LEVELS[fcLevel].map((c,i)=>({q:c[0], a:c[1], i}));
+const fcGrid = document.getElementById('fcGrid');
+const fcCount = document.getElementById('fcCount');
+function renderFC(list){
+  fcGrid.innerHTML='';
+  list.forEach(item=>{
+    const card=document.createElement('div');
+    card.className='flip-card';
+    card.innerHTML = `<div class="flip-inner">
+      <div class="flip-face flip-front"><div><span class="fc-idx">CARD ${item.i+1}</span>${item.q}</div></div>
+      <div class="flip-face flip-back">${item.a}</div>
+    </div>`;
+    card.onclick=()=>card.classList.toggle('flipped');
+    fcGrid.appendChild(card);
+  });
+  fcCount.textContent = list.length + ' cards';
+}
+function loadFCLevel(level){
+  fcLevel = level;
+  fcState = FC_LEVELS[fcLevel].map((c,i)=>({q:c[0], a:c[1], i}));
+  document.getElementById('fcSearch').value='';
+  renderFC(fcState);
+  document.querySelectorAll('#fcLevelRow .node-btn').forEach(b=>b.classList.toggle('on', b.dataset.level===level));
+}
+renderFC(fcState);
+document.getElementById('fcLevelRow').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-level]');
+  if(!btn) return;
+  loadFCLevel(btn.dataset.level);
+});
+document.getElementById('fcSearch').addEventListener('input', e=>{
+  const v = e.target.value.toLowerCase();
+  renderFC(fcState.filter(c => c.q.toLowerCase().includes(v) || c.a.toLowerCase().includes(v)));
+});
+document.getElementById('fcShuffle').addEventListener('click', ()=>{
+  for(let i=fcState.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [fcState[i],fcState[j]]=[fcState[j],fcState[i]]; }
+  document.getElementById('fcSearch').value='';
+  renderFC(fcState);
+});
+
+/* ===================== 5. QUIZ BANK (3 DIFFICULTY LEVELS) ===================== */
+/* first option in each array is always the correct one; shuffled at render time */
+const QUIZ_EASY = [
+["How many methods are used to prepare pharmaceutical solutions?",["4","2","3","6"]],
+["Which is the easiest and simplest method of preparing a solution?",["Simple solution","Chemical reaction","Extraction","Sterilization"]],
+["Ca(OH)2 solution is commonly known as:",["Lime water","Rose water","Saline","Syrup"]],
+["Amaranth solution USP 1% is used as a:",["Coloring agent","Antiseptic","Cathartic","Vasoconstrictor"]],
+["Gentian violet solution USP is used as a:",["Topical local anti-infective","Oral rehydration solution","Nasal decongestant","Cathartic"]],
+["Iodine solution NF is used as a:",["Skin and surgical disinfectant","Coloring agent","Anticoagulant","Cathartic"]],
+["Tolnaftate solution USP 1% uses which vehicle?",["Polyethylene glycol 400","Purified water","Ethanol","Propylene glycol"]],
+["Clindamycin phosphate topical solution treats:",["Acne vulgaris","Ear infections","Hypertension","Diarrhea"]],
+["Heparin solution USP contains how many units of sodium heparin?",["75,000 units","1,000 units","10,000 units","100,000 units"]],
+["Citrate-phosphate-dextrose solution is used as a(n):",["Anticoagulant","Cathartic","Antiseptic","Decongestant"]],
+["An irrigating solution for prostatectomy contains what % amino acetic acid?",["15%","5%","25%","1%"]],
+["Ringer's solution (NF) contains:",["NaCl, KCl, and CaCl2","NaCl only","Dextrose only","Citric acid only"]],
+["Ringer's solution is also known as:",["Trichloride solution","Lime water","Citrate solution","Saline cathartic"]],
+["Which is an example of a solute prepared by chemical reaction because it cannot dissolve directly?",["Aluminum subacetate","Amaranth solution","Iodine solution","Gentian violet"]],
+["Formaldehyde solution is also called:",["Formalin","Formalinide","Formalcohol","Formyl solution"]],
+["Hydrogen peroxide solution is used as a:",["Topical anti-infective","Coloring agent","Anticoagulant","Vasoconstrictor"]],
+["Magnesium citrate solution, formed as a desired by-product, is used as a:",["Cathartic","Vasoconstrictor","Anti-infective","Decongestant"]],
+["Epinephrine (adrenalin chloride USP) solution is prepared by:",["Extraction","Simple solution","Chemical reaction","Sterilization only"]],
+["Epinephrine solution is diluted to what ratio in purified water?",["1:1000","1:100","1:10,000","1:1"]],
+["Epinephrine solution's main pharmacologic action is:",["Vasoconstrictor","Vasodilator","Anticoagulant","Antiseptic"]],
+["Which of these is NOT one of the six major uses of solutions?",["Transdermal patch","Oral","Ophthalmic","Otic"]],
+["Oral solutions, syrups, elixirs, spirits, and tinctures are prepared for:",["Systemic effects of the medicinal agent","Local skin effects only","Diagnostic imaging","Sterilization"]],
+["Oral rehydration solutions (ORS) are usually effective for volume depletion of about:",["5–10% of body weight","20–30% of body weight","Less than 1%","Over 50%"]],
+["A liter of typical ORS contains how much dextrose?",["25 g","5 g","100 g","250 g"]],
+["ORS should not be mixed with:",["Milk or fruit juices","Plain water","Boiled water","Nothing"]],
+["Magnesium citrate oral solution is commonly known as:",["Citrate of magnesia","Milk of magnesia","Lime water","Ringer's solution"]],
+["Magnesium citrate solution acts as a:",["Saline cathartic","Anticoagulant","Antiseptic","Vasoconstrictor"]],
+["Ophthalmic solutions should have all of the following EXCEPT:",["Hypertonicity","Isotonicity","Buffering near pH 7.4","Appropriate viscosity"]],
+["Standard autoclave sterilization for ophthalmic solutions is at:",["121°C for 15 minutes","100°C for 30 minutes","150°C for 5 minutes","80°C for 60 minutes"]],
+["Multi-dose ophthalmic solutions require:",["A preservative","No preservative","Only higher viscosity","Only a lower pH"]],
+["Benzalkonium chloride is typically used at:",["0.004–0.01% w/v","1–5% w/v","10–20% w/v","0.00001% w/v"]],
+["Thiomersal is used in ophthalmic solutions at:",["0.001–0.5% w/v","5–10% w/v","50% w/v","0.00001% w/v"]],
+["The eye can tolerate a tonicity range of about:",["0.6–2%","0.01–0.1%","5–10%","20–30%"]],
+["What concentration of boric acid gives the same osmotic pressure as 0.9% NaCl?",["1.9%","0.9%","9%","0.09%"]],
+["Ophthalmic solutions should be buffered close to pH:",["7.4","5.0","9.0","3.0"]],
+["The boric acid buffer for ophthalmic solutions provides a pH of about:",["Slightly below 5","9 to 10","Exactly 7.4","2 to 3"]],
+["Phosphate buffer for ophthalmic solutions provides a pH of about:",["5.9–8.0","1–2","10–12","Exactly 7.4 only"]],
+["The optimal viscosity range for ophthalmic solutions is about:",["15–25 cps","1–5 cps","100–200 cps","500–1000 cps"]],
+["Which dropper type is preferred for ophthalmic solutions?",["Fixed dropper","Screw dropper","A separate rubber bulb only","A glass pipette"]],
+["Which is NOT one of the 6 general requirements for parenteral preparations?",["Pleasant taste","Sterility","Isotonicity","Freedom from pyrogens"]],
+["Which parenteral route allows an essentially unlimited volume (infusion)?",["Intravenous","Intramuscular","Subcutaneous","Intradermal"]],
+["A typical intramuscular injection volume is about:",["2–5 mL","0.2 mL","50 mL","10 mL"]],
+["A typical subcutaneous injection volume is about:",["2 mL","20 mL","0.02 mL","100 mL"]],
+["A typical intradermal injection volume is about:",["0.2 mL","5 mL","20 mL","50 mL"]],
+["Intraspinal injection volume can be up to:",["10 mL","100 mL","1 mL","1000 mL"]],
+["Intradermal injections are mainly used for:",["Vaccines and diagnostic tests","Large-volume infusions","Anti-neoplastic organ targeting","Oral rehydration therapy"]],
+["Intra-arterial injection is used for:",["Targeting an organ / anti-neoplastic drugs","Routine childhood vaccination","Oral rehydration","Ear wax removal"]],
+["Phenylephrine HCl nasal solution USP is used at a concentration range of:",["0.125–10%","50–100%","0.0001–0.001%","20–50%"]],
+["Nasal solutions should be buffered to approximately what pH range?",["5.5–6.5","2–3","9–10","Exactly 7.4"]],
+["Nasal decongestant solutions should generally not be used for longer than:",["3–5 days","3–5 weeks","3–5 hours","1 year"]],
+["Oxymetazoline nasal spray is typically dosed about every:",["12 hours","1 hour","3–4 hours","Once every 24 hours only"]],
+["Cerumen is composed mainly of secretions from which glands?",["Sweat and sebaceous glands","Salivary glands","Lacrimal glands","Thyroid gland"]],
+["Common preservatives used in otic preparations include:",["Chlorobutanol and thimerosal","Benzalkonium chloride only","Aspirin","Insulin"]],
+["Otic preparations are typically packaged in containers of about:",["5–15 mL with a dropper","500 mL bottles","1 mL ampoules only","1 L bottles"]],
+["A 'retention enema' involves:",["Injecting solution into the rectum and holding it","Injecting solution into a vein","Applying a solution to the eye","Spraying a solution into the nose"]],
+["Halazone tablets for solution are used to:",["Disinfect drinking water","Treat ear infections","Lower blood pressure","Treat acne vulgaris"]],
+["Potassium permanganate solution should be prepared using:",["Only distilled water","Tap water","Normal saline","Ethyl alcohol"]],
+["%w/v means:",["Grams of constituent per 100 mL of preparation","mL per 100 mL","Grams per 100 g","mL per 100 g"]],
+["A 1:1000 w/v ratio strength means:",["1 g of constituent in 1000 mL of preparation","1 mL in 1000 mL","1 g in 1000 g","1000 g in 1 mL"]],
+["Most pharmaceutical solutions are:",["Unsaturated with solute","Always fully saturated","Always supersaturated","Colloidal dispersions"]],
+];
+
+const QUIZ_MEDIUM = [
+["When a solution can be made either by simple solution or chemical reaction, which is preferred and why?",["Simple solution, because it's the easier method","Chemical reaction, because it's more stable","Extraction, because it's more accurate","Sterilization, because it's safer"]],
+["Lime water prepared by chemical reaction starts from which reactant?",["CaO (lime) + excess water","Ca(OH)2 directly in water","CaCO3 + HCl","Calcium metal + water"]],
+["Formaldehyde solution (formalin) is prepared by chemical reaction mainly because:",["The active constituent isn't usable in another form","It's cheaper to make","It needs to be sterile","It's a by-product of another process"]],
+["Magnesium citrate solution is prepared by chemical reaction mainly because:",["A desired by-product (citrate) forms","It cannot dissolve otherwise","It requires extraction","It must be isotonic"]],
+["Why can't Ringer's solution (NF) be used parenterally?",["Its solvent is purified water, not water for injection","It is not sterile","It is hypertonic","It contains preservatives"]],
+["Why must anticoagulant and irrigating solutions be sterilized, unlike solutions such as Amaranth?",["They contact blood or sensitive/surgical tissue","They are more concentrated","They are colored preparations","They contain alcohol"]],
+["A pharmacist turning a dry powder mixture into a ready-to-use oral liquid is:",["Reconstituting a dry powder mixture","Extemporaneous compounding from bulk","Dispensing a commercial product as-is","Diluting a concentrated product"]],
+["Rapid fluid loss during diarrhea occurs mainly from which body compartment?",["Extracellular fluid compartment","Intracellular fluid compartment","Bone marrow","Adipose tissue"]],
+["Why do oral rehydration solutions diminish complications compared to parenteral electrolyte therapy?",["They are effective, OTC, inexpensive, and non-invasive for mild dehydration","They completely replace IV therapy in all cases","They contain no electrolytes","They must be sterilized before use"]],
+["ORS powder packets should NOT be reconstituted or mixed with:",["Milk or fruit juices","Plain water","Boiled water","Nothing — mixing with anything is fine"]],
+["Why is boiling water used throughout magnesium citrate solution preparation?",["To kill mold spores and prevent microbial growth","To dissolve sugar faster","To increase viscosity","To reduce the final pH"]],
+["What makes magnesium citrate solution more palatable as a cathartic?",["Citric acid, lemon oil, syrup, carbonation, and cold serving temperature","Its high viscosity","Its dark color","Its high sodium content"]],
+["Ophthalmic solutions for surgery or a traumatized eye should generally:",["Not contain a preservative","Contain a double dose of preservative","Be strongly hypertonic","Be completely unbuffered"]],
+["Benzalkonium chloride acts as an ophthalmic preservative by:",["Ion exchange with carboxyl groups of microbial cell walls","Causing osmotic shock only","Oxidizing microbial DNA directly","Denaturing proteins at high pH only"]],
+["A key stability problem with Chlorobutanol in eye drops is that it:",["Hydrolyzes and produces HCl, affecting pH","Is completely insoluble in water","Is prohibitively expensive","Degrades only under light"]],
+["A hypertonic ophthalmic solution applied to the eye will cause:",["Shrinkage of eye tissue","Swelling of eye tissue","No noticeable effect","Increased solution viscosity"]],
+["Why is boric acid sometimes used instead of NaCl to adjust ophthalmic tonicity?",["1.9% boric acid produces the same osmotic pressure as 0.9% NaCl","Boric acid is cheaper than NaCl","NaCl cannot dissolve in eye drops","Boric acid increases viscosity"]],
+["Which is NOT a benefit of buffering ophthalmic solutions?",["Increasing the drug's cost","Reducing patient discomfort","Controlling stability","Controlling therapeutic activity"]],
+["Phosphate buffer for ophthalmic solutions is unsuitable for:",["Pilocarpine and homatropine salts","Cocaine salts","Tetracaine salts","Phenylephrine salts"]],
+["Why should ophthalmic solutions be viscous?",["To keep the drug in contact with the eye and reduce drainage","To make the solution easier to autoclave","To increase shelf life indefinitely","To prevent evaporation of the solvent only"]],
+["A key disadvantage of glass containers for ophthalmic solutions is that:",["Alkaline leaching raises the solution's pH","They are too flexible to seal well","They react with parabens only","They are always opaque to light"]],
+["Why is a fixed dropper preferred over a screw dropper for eye drops?",["Lower chance of microorganism contamination","It dispenses a larger dose","It is cheaper to manufacture","It doesn't require cleaning"]],
+["Which is a true advantage of IV injection?",["Rapid response since the drug goes directly to blood","It is always completely painless","Any dosage form can be given IV","It carries no risk at all"]],
+["A true disadvantage of IV injection is that:",["The drug cannot be recovered once injected","It is always slow acting","It cannot be used for large volumes","It is restricted to suspensions only"]],
+["How can hemolysis risk from IV injection be reduced?",["By injecting slowly","By injecting as fast as possible","By avoiding sterile technique","By using oily vehicles"]],
+["For IM injection, which formulation type is absorbed FASTEST?",["Aqueous solution","Oily suspension with thickening agent","Oily suspension","Oily solution"]],
+["Which insulin type shows fast absorption but short duration when given subcutaneously?",["Soluble insulin","Protamine zinc insulin","NPH insulin only","Insoluble insulin generally"]],
+["Why does an IM injection typically have a slower onset than an IV injection?",["The drug diffuses slowly out of the muscle before reaching systemic circulation","IM needles are always smaller","IM injections are always oily","Muscle tissue destroys the drug"]],
+["Absorption from a subcutaneous injection is chiefly affected by:",["Concentration, solubility, and blood flow","Only the injection needle gauge","Only patient age","Only ambient temperature"]],
+["Intra-arterial injection requires a surgical operation mainly because:",["It targets a drug directly into a specific artery/organ","It always needs general anesthesia for pain relief","Arteries are impossible to access otherwise","It is only used in emergencies"]],
+["Nasal decongestant solutions are formulated close to nasal physiology by being:",["Roughly isotonic (~0.9% NaCl) and buffered to pH 5.5–6.5","Strongly hypertonic and acidic (pH 2–3)","Strongly hypotonic and alkaline (pH 9–10)","Isotonic but unbuffered"]],
+["Why should nasal decongestants generally be limited to 3–5 days of use?",["To avoid complications such as rebound congestion from prolonged use","Because the drug becomes toxic after 5 days","Because the bottle expires after 5 days","Because insurance typically won't cover longer use"]],
+["Compared with phenylephrine (dosed every 3–4 hours), oxymetazoline nasal spray is dosed:",["Less frequently, about every 12 hours","More frequently, every hour","At the same frequency","Only once per week"]],
+["Carbamide peroxide helps remove earwax by:",["Releasing oxygen that disrupts the wax's integrity","Dissolving it with strong acid","Freezing the wax solid","Increasing the wax's viscosity"]],
+["Synthetic surfactant ear drops remove cerumen mainly by:",["Emulsifying/dispersing the wax for removal by water irrigation","Directly dissolving the wax chemically into gas","Numbing the ear canal","Increasing wax hardness for extraction"]],
+["Anhydrous glycerin/propylene glycol are preferred vehicles for ear preparations mainly because they:",["Help soften cerumen and limit microbial growth without introducing water","Are the cheapest solvents available","Evaporate instantly on contact","Are required by law for all otic products"]],
+["The main difference between %w/v and %w/w is:",["%w/v measures grams per 100 mL (volume basis); %w/w measures grams per 100 g (weight basis)","They mean exactly the same thing","%w/v is always more concentrated than %w/w","%w/w is only used for gases"]],
+["A 1:1000 v/v ratio strength specifically means:",["1 mL of constituent in 1000 mL of preparation","1 g of constituent in 1000 mL of preparation","1 g of constituent in 1000 g of preparation","1000 mL of constituent in 1 mL of preparation"]],
+["Most pharmaceutical solutions are unsaturated, meaning:",["The dissolved solute is well below the solvent's actual dissolving capacity","The solute has completely stopped dissolving","The solution is at its maximum possible concentration","Excess undissolved solute always remains at the bottom"]],
+["Which is NOT a technique to hasten dissolution?",["Freezing the solution","Applying heat","Reducing particle size","Vigorous agitation"]],
+["Most chemical agents dissolve more readily at elevated temperature mainly because:",["Dissolution is usually endothermic, and heat drives the process","Dissolution is usually exothermic, and heat drives the process","Heat always destroys the solute so it disperses","Cold water has a lower molecular weight"]],
+["Pharmacists avoid excessive heat when dissolving many drugs mainly because:",["Heat can destroy or degrade the medicinal agent","Heat always slows dissolution down","Using heat is not permitted by law","Heat only increases production cost"]],
+["Heat should be avoided when dissolving volatile solutes or using a volatile solvent because:",["It causes loss of the volatile agent to the atmosphere","It has essentially no effect at all","It always speeds dissolution with no downside","It causes unwanted precipitation"]],
+["Dissolving many calcium salts in water is typically what kind of reaction?",["Exothermic (releases heat)","Endothermic (absorbs heat)","Photochemical","Essentially non-reactive"]],
+["Calcium hydroxide is MORE soluble at:",["15°C (170 mg/100 mL)","25°C (140 mg/100 mL)","100°C","Room temperature specifically, and nowhere else"]],
+["Calcium Hydroxide Topical Solution, USP exploits which property of the drug?",["Its temperature-dependent (exothermic) solubility","Its high viscosity","Its bright color","Its sweet taste"]],
+["Why is Iodine solution NF prepared and used specifically in liquid form?",["It must directly contact skin/surgical sites as a disinfectant","It is more stable as a solid","It cannot be dissolved in any solvent","It must be swallowed to work"]],
+["What best explains why oral solutions may act faster systemically than suspensions or tablets of the same drug?",["The drug is already dissolved, so no dissolution step is needed before GI absorption","Oral solutions bypass the GI tract entirely","Oral solutions are always given in higher doses","Suspensions are always more concentrated"]],
+["Which best distinguishes 'dispensing a commercially prepared oral solution' from 'extemporaneous compounding'?",["Dispensing uses a ready-made product; compounding builds the solution from bulk ingredients","Both terms mean exactly the same thing","Compounding always requires sterilization; dispensing never does","Dispensing is only done for pediatric products"]],
+["Why is knowledge of a drug's solubility/stability important when advising patients on mixing oral solutions with juice or milk?",["Some drugs may become unstable, precipitate, or interact with beverage components","It has no clinical relevance","All oral drugs are equally stable in any beverage","Juices always improve drug absorption"]],
+];
+
+const QUIZ_HARD = [
+["A drug is a solid that will not dissolve directly in its intended solvent, yet reacts with another reagent to form a soluble, equally active compound. This scenario justifies choosing:",["Chemical reaction","Simple solution","Extraction","Sterilization only"]],
+["Why is Ringer's solution (NF), despite being isotonic, unsuitable for parenteral administration?",["Its solvent (purified water) doesn't meet injection sterility/pyrogen standards","It is hypertonic, not isotonic","It lacks potassium chloride","It has too low a pH"]],
+["A Chlorobutanol-preserved eye drop shows a falling pH over its shelf life. The most likely cause is:",["Slow hydrolysis of Chlorobutanol releasing HCl","Evaporation of the buffer salts","Photodegradation of benzalkonium chloride","Leaching of alkaline substances from a glass container"]],
+["A pilocarpine ophthalmic solution formulated in phosphate buffer is likely to show:",["Instability, since pilocarpine salts are unstable in phosphate buffer","Excellent long-term stability","Increased viscosity over time","No pH-related issues at all"]],
+["Why can 1.9% boric acid substitute for 0.9% NaCl in adjusting ophthalmic tonicity?",["They are osmotically equivalent at those concentrations","Boric acid is always used regardless of concentration","NaCl cannot dissolve in eye drops","Boric acid has no effect on tonicity"]],
+["Preservative-free, single-dose ophthalmic solutions used after eye surgery are formulated this way primarily because:",["The product is used only once, and preservatives would irritate open eye tissue","Preservatives are too expensive to include","Single-dose products cannot be sterilized","Preservatives always cause blindness"]],
+["Which pair of container-related problems is correctly matched to its container type?",["Glass: alkaline leaching raises pH; Plastic: interacts with preservative or allows agent separation","Glass: absorbs preservative; Plastic: leaches alkaline substances","Both glass and plastic cause identical problems","Neither container type causes any chemical problem"]],
+["Which parenteral route offers rapid onset and full drug availability but carries the specific risk that an error cannot be reversed once given?",["Intravenous","Intramuscular","Subcutaneous","Intradermal"]],
+["An oily suspension with a thickening agent is deliberately chosen for IM injection when the goal is:",["A prolonged, sustained-release depot effect","The fastest possible onset of action","Avoiding any injection site reaction","Achieving isotonicity"]],
+["The pharmacologic rationale for using soluble insulin versus protamine zinc insulin subcutaneously is best described as:",["Trading fast onset/short duration (soluble) for slow onset/prolonged duration (protamine zinc)","Both have identical onset and duration","Soluble insulin is always longer-acting","Protamine zinc insulin cannot be given subcutaneously"]],
+["Intra-arterial drug delivery for anti-neoplastic therapy is advantageous mainly because it:",["Delivers a high local concentration to the tumor's organ while limiting systemic exposure","Avoids the need for any imaging or diagnostic confirmation","Is simpler to perform than an IV injection","Requires no surgical access at all"]],
+["Why is intradermal injection unsuitable for drugs requiring a fast systemic effect?",["It produces local distribution with slow absorption","It always causes anaphylaxis","It bypasses metabolism entirely, causing overdose","It is only compatible with oily vehicles"]],
+["A nasal decongestant is designed to be isotonic and buffered to pH 5.5–6.5 primarily to:",["Minimize irritation by matching natural nasal fluid characteristics","Maximize systemic absorption","Prevent the drug from working too quickly","Increase its shelf life indefinitely"]],
+["The main reason nasal decongestant solutions carry a 3–5 day use limit is to:",["Avoid complications from prolonged use of the vasoconstrictor","Comply with an arbitrary manufacturing standard","Prevent the solution from evaporating","Avoid excess viscosity build-up"]],
+["Oxymetazoline's less frequent dosing schedule (~every 12 hours) compared with phenylephrine (~every 3–4 hours) reflects a difference in:",["Duration of pharmacologic action","Route of administration","Preservative content","Container type"]],
+["The mechanism by which carbamide peroxide loosens impacted earwax is best described as:",["Chemical disruption via oxygen release on contact with cerumen","Physical emulsification only","Freezing and cracking the wax","Simple dilution with water"]],
+["Synthetic surfactant ear drops remove cerumen primarily by:",["Emulsifying/dispersing the wax for removal by irrigation","Chemically dissolving the wax into gas","Numbing the auditory canal","Increasing wax adhesion to the canal wall"]],
+["Anhydrous vehicles (glycerin/propylene glycol) are favored for ear preparations mainly because they:",["Soften cerumen while limiting the introduction of water that could support microbial growth","Are the least expensive vehicles available","Cause immediate evaporation on instillation","Are required for all otic products by definition"]],
+["A technician treats '1:1000 w/v' and '1:1000 v/v' as interchangeable for the same drug. This is potentially an error because:",["They measure different quantities (weight vs. volume) that are only numerically equal for a density of 1 g/mL","They are always numerically identical for any substance","w/v ratios are always larger than v/v ratios","v/v ratios don't apply to liquids"]],
+["The statement 'most pharmaceutical solutions are unsaturated with solute' is best explained as a deliberate strategy to:",["Prevent crystallization/precipitation if storage conditions change slightly","Reduce the drug's therapeutic effect","Increase manufacturing cost","Make the solution appear more dilute than it is"]],
+["For a heat-labile drug in a volatile alcohol-based solvent, which dissolution-hastening technique(s) should be prioritized over heat?",["Particle size reduction and vigorous agitation","Increasing the temperature to near boiling","Refrigerating the solvent to 0°C only","Adding more heat-stable excipients only"]],
+["Why does adding heat help dissolve most drugs but hinder the dissolution of calcium hydroxide?",["Most drugs dissolve endothermically (heat helps); calcium hydroxide dissolves exothermically (heat hinders)","All drugs dissolve exothermically, so heat always hinders dissolution","Calcium hydroxide is the only endothermic solute known","Heat has no effect on any solute's solubility"]],
+["A batch of Calcium Hydroxide Topical Solution, USP prepared at 25°C instead of the intended 15°C will most likely be:",["Under-strength, since calcium hydroxide is less soluble at the higher temperature","Over-strength, since heat always increases solubility","Unchanged in concentration","Unsafe due to sterility loss"]],
+["Aluminum subacetate and Magnesium citrate are both prepared by chemical reaction, but for different underlying reasons. These reasons are best described as:",["Aluminum subacetate: insolubility of the pure solute as a solid; Magnesium citrate: formation of a desired by-product","Both are prepared for the exact same reason","Aluminum subacetate forms a by-product; Magnesium citrate cannot dissolve directly","Neither reason applies to either compound"]],
+["Switching an ophthalmic product's preservative from Benzalkonium chloride to Thiomersal requires re-verifying all of the following EXCEPT:",["The drug's therapeutic dose","Effectiveness at the working concentration","Inertness with the active drug and container","Container-wall adsorption and long-term stability"]],
+["'Properly packaged volume' is listed as a distinct ophthalmic requirement because it primarily addresses:",["The functional/usability match between package size and intended use (drops vs. irrigation)","An additional sterility barrier","A chemical stability factor","A pH-buffering mechanism"]],
+["The use of 'water for injection' rather than purified water for a 15% amino acetic acid prostatectomy irrigating solution parallels which other example from the lecture?",["Ringer's solution (NF) being unsuitable for parenteral use due to its purified-water solvent","Epinephrine solution's extraction with hydrochloric acid","Iodine solution's use as a skin disinfectant","Magnesium citrate solution's carbonation step"]],
+["Oral rehydration therapy is generally sufficient for dehydration involving fluid loss of about 5–10% of body weight, but may be insufficient when:",["The patient is progressing toward hypovolemic shock or cannot tolerate oral intake","The patient is a healthy adult","The dehydration is extremely mild","The patient prefers tablets over liquids"]],
+["Mold contamination discovered in a magnesium citrate solution batch made entirely with boiling water most likely resulted from:",["Post-manufacture contamination (e.g., during bottling or from a non-sterile container)","A failure of the citric acid to react properly","Using too much lemon oil","Insufficient carbonation"]],
+["The lecture pairs 'sterility' with 'presence of a preservative' for ophthalmic products because:",["Sterility covers initial contamination; the preservative protects against contamination introduced during repeated multi-dose use","They are functionally identical concepts","Preservatives replace the need for sterility entirely","Sterility is irrelevant once a preservative is added"]],
+["A paraben-preserved eye drop in a certain plastic bottle loses potency faster than the same formulation in glass. The most likely explanation is:",["The plastic is adsorbing/interacting with the paraben preservative","The glass bottle is defective","Parabens are incompatible with all liquid formulations","Plastic containers cannot hold aqueous solutions"]],
+["IM drug absorption depends on 'drug release and blood flow' because, unlike IV administration, IM injection requires:",["The drug to first leave the muscle depot before reaching systemic circulation","No absorption step at all","A separate sterilization step before absorption","Direct entry into the venous system"]],
+["The lecture's statement that 'salt form of the drug absorbs faster than free [form]' after IM injection is best explained by:",["Salt forms typically being more water-soluble, dissolving faster at the injection site","Salt forms always being oil-soluble","Free forms always being more potent","Salt forms bypassing the need for blood flow entirely"]],
+["For a new tetracaine eye drop, which buffer does the lecture indicate is appropriately matched to this drug?",["Boric acid buffer","Phosphate buffer","Acetate buffer","No buffer is needed for tetracaine"]],
+["Targeting both diagnostic imaging agents and anti-neoplastic drugs via the intra-arterial route reflects a shared goal of:",["Achieving high local/organ concentration while limiting systemic exposure","Avoiding all imaging confirmation","Simplifying the injection technique","Making the drug isotonic"]],
+["Avoiding heat for a volatile solvent versus avoiding heat for a heat-labile drug reflects two different underlying problems, respectively:",["Physical loss of volatile material vs. chemical degradation of the drug","Both reflect the exact same chemical degradation mechanism","Both reflect only cost concerns","Neither is actually a real concern in practice"]],
+["A formulation needing both ophthalmic isotonicity and a specific pH, using a drug unstable in phosphate buffer, is best achieved by:",["Using boric acid, which can provide both buffering and (at ~1.9%) tonicity adjustment","Using only sodium chloride with no buffer at all","Using phosphate buffer regardless of drug stability","Omitting both pH and tonicity adjustment entirely"]],
+["'Free from pyrogen' is a separate parenteral requirement from 'sterility' because:",["Pyrogens (e.g., endotoxins) can persist and cause fever even after sterilization kills the microorganisms that produced them","Pyrogens and microorganisms are the exact same thing","Sterilization always removes pyrogens automatically","Pyrogens only matter for oral products"]],
+["Hydrogen peroxide solution qualifies under 'the active constituent is not usable in a form other than solution' mainly because:",["Concentrated/solid hydrogen peroxide is impractical and unstable to store/use safely","Hydrogen peroxide is insoluble in water","Hydrogen peroxide has no other described medical uses","It must always be extracted from plants"]],
+["Applying the lecture's three listed reasons for preferring chemical reaction over simple solution as a general decision framework, a formulator should choose chemical reaction over simple solution when:",["The solute cannot dissolve as a solid, OR the constituent is only usable as a solution, OR the reaction yields a valuable by-product","Only when the drug is a liquid at room temperature","Only when sterilization is impossible","Never — simple solution is always the correct default regardless of circumstances"]],
+];
+
+const QUIZ_LEVELS = {easy: QUIZ_EASY, medium: QUIZ_MEDIUM, hard: QUIZ_HARD};
+let quizLevel = 'easy';
+function buildQuizData(level){
+  return QUIZ_LEVELS[level].map((item)=>{
+    const opts = item[1].map((t,idx)=>({text:t, correct: idx===0}));
+    for(let i2=opts.length-1;i2>0;i2--){ const j=Math.floor(Math.random()*(i2+1)); [opts[i2],opts[j]]=[opts[j],opts[i2]]; }
+    return {q:item[0], opts, answered:false};
+  });
+}
+let quizData = buildQuizData(quizLevel);
+let quizIdx = 0;
+let quizScore = 0;
+const quizArea = document.getElementById('quizArea');
+const quizProgress = document.getElementById('quizProgress');
+const quizScoreEl = document.getElementById('quizScore');
+const quizCountEl = document.getElementById('quizCount');
+quizCountEl.textContent = quizData.length + ' questions';
+
+function renderQuiz(){
+  if(quizIdx >= quizData.length){
+    quizArea.innerHTML = `<div class="quiz-card quiz-result">
+      <div class="big">${quizScore}/${quizData.length}</div>
+      <p>Quiz complete. Tap restart to shuffle a fresh run.</p>
+      <div class="quiz-nav" style="justify-content:center;"><button id="restartBtn">RESTART QUIZ</button></div>
+    </div>`;
+    quizProgress.style.width='100%';
+    document.getElementById('restartBtn').onclick = ()=>{
+      quizData.forEach(q=>{ q.answered=false;
+        for(let i=q.opts.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [q.opts[i],q.opts[j]]=[q.opts[j],q.opts[i]]; }
+      });
+      quizIdx=0; quizScore=0; renderQuiz();
+    };
+    return;
+  }
+  const item = quizData[quizIdx];
+  quizProgress.style.width = Math.round((quizIdx/quizData.length)*100)+'%';
+  quizScoreEl.textContent = `Score ${quizScore}/${quizIdx}`;
+  quizArea.innerHTML = `<div class="quiz-card">
+    <p class="quiz-q">${quizIdx+1}. ${item.q}</p>
+    <div id="optsWrap"></div>
+    <div class="quiz-nav">
+      <button id="prevBtn" ${quizIdx===0?'disabled':''}>← PREV</button>
+      <button id="nextBtn" disabled>NEXT →</button>
+    </div>
+  </div>`;
+  const optsWrap = document.getElementById('optsWrap');
+  item.opts.forEach(o=>{
+    const b=document.createElement('button');
+    b.className='quiz-opt';
+    b.textContent=o.text;
+    if(item.answered){
+      b.disabled=true;
+      if(o.correct) b.classList.add('correct');
+      if(o.picked && !o.correct) b.classList.add('wrong');
+    }
+    b.onclick=()=>{
+      if(item.answered) return;
+      item.answered = true;
+      o.picked = true;
+      if(o.correct) quizScore++;
+      document.getElementById('nextBtn').disabled=false;
+      renderQuiz();
+      quizScoreEl.textContent = `Score ${quizScore}/${quizIdx+1}`;
+    };
+    optsWrap.appendChild(b);
+  });
+  document.getElementById('prevBtn').onclick=()=>{ if(quizIdx>0){ quizIdx--; renderQuiz(); } };
+  document.getElementById('nextBtn').onclick=()=>{ quizIdx++; renderQuiz(); };
+}
+function loadQuizLevel(level){
+  quizLevel = level;
+  quizData = buildQuizData(level);
+  quizIdx = 0;
+  quizScore = 0;
+  quizCountEl.textContent = quizData.length + ' questions';
+  document.querySelectorAll('#quizLevelRow .node-btn').forEach(b=>b.classList.toggle('on', b.dataset.level===level));
+  renderQuiz();
+}
+document.getElementById('quizLevelRow').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-level]');
+  if(!btn) return;
+  loadQuizLevel(btn.dataset.level);
+});
+renderQuiz();
+
+</script>
+</body>
+</html>
